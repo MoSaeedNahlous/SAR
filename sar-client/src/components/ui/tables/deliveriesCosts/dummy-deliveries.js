@@ -1,0 +1,1 @@
+export const dComs =[{id:1,name:'one',cost:'23'},{id:2,name:'two',cost:'223'},{id:3,name:'three',cost:'432'}]

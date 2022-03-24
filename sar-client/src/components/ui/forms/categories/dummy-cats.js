@@ -1,0 +1,1 @@
+export const cats = [{id:1,name:"t-shirt"},{id:2,name:"shirt"}]
