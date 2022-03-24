@@ -8,12 +8,15 @@ import AddSize from './components/pages/management/addSize/AddSize';
 import AddCity from './components/pages/management/addCity/AddCity';
 import AddDeliveryCost from './components/pages/management/addDeliveryCost/AddDeliveryCost';
 import AddDeliveryCompany from './components/pages/management/addDeliveryCompany/AddDeliveryCompany';
-import AddEmp from './components/pages/management/addEmp/AddEmp';
+import './bootstrap.min.css';
+import Navbar from './components/ui/navbar/Navbar';
+import AddProduct from './components/pages/products/addProduct/AddProduct';
 
 function App() {
   return (
     <div className='App'>
       <Router>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/emp-login' element={<EmpLoginPage />} />
@@ -35,7 +38,9 @@ function App() {
             path='/management/add-delivery-company'
             element={<AddDeliveryCompany />}
           />
-          <Route path='/management/add-emp' element={<AddEmp />} />
+
+          {/* Products Routes */}
+          <Route path='/products/add-product' element={<AddProduct />} />
         </Routes>
       </Router>
     </div>
