@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { categoriesReducer} from './reducers/categoriesReducer'
 
 const initialState = {
-    test:{name:'saeed',age:15}
 }
 
-const reducer = combineReducers({})
+const reducer = combineReducers({
+    categories:categoriesReducer
+})
 
 const middleware = [thunk]
 
