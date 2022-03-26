@@ -1,22 +1,26 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { categoriesReducer} from './reducers/categoriesReducer'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { getCategoriesReducer } from './reducers/categoriesReducers';
+import { getSubCategoriesReducer } from './reducers/subCategoriesReducers';
+import { loginReducer } from './reducers/authReducers';
+import {  getPostsReducer} from './reducers/postsReudcers';
 
-const initialState = {
-}
+const initialState = {};
 
 const reducer = combineReducers({
-    categories:categoriesReducer
-})
+  getCategories: getCategoriesReducer,
+  getSubCategories: getSubCategoriesReducer,
+  getPosts :getPostsReducer,
+  login : loginReducer,
+});
 
-const middleware = [thunk]
+const middleware = [thunk];
 
 const store = createStore(
-    reducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
-)
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
-
-export default store
+export default store;

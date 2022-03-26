@@ -5,7 +5,7 @@ import {
     GET_CATEGORIES_SUCCESS
 } from '../constants/categoriesConstants'
 
-export const categoriesReducer = (state = { categories: [] }, action) => {
+export const getCategoriesReducer = (state = { categories: [] }, action) => {
      switch (action.type) {
         case GET_CATEGORIES_REQUEST:
             return { loading: true, categories: [] }

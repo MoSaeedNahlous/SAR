@@ -9,7 +9,7 @@ import { Alert, CircularProgress } from '@mui/material';
 const AddCategory = () => {
   const dispatch = useDispatch();
 
-  const categories = useSelector((state) => state.categories);
+  const categories = useSelector((state) => state.getCategories);
   const { categories: categoriesList, error, loading } = categories;
 
   useEffect(() => {
