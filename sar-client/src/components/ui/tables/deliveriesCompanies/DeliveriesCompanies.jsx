@@ -3,14 +3,14 @@ import { Button, Checkbox, FormControlLabel } from '@mui/material';
 
 const DeliveriesCompanies = ({ data }) => {
   return (
-    <div>
-      <h3>DeliveriesCompanies </h3>
-      <table>
+    <div className='text-center'>
+      <h3 className='my-4'>شركات التوصيل </h3>
+      <table className='table table-striped w-75 mx-auto mt-2' dir='rtl'>
         <thead>
-          <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Actions</td>
+          <tr className='bg-primary text-white'>
+            <th>ID</th>
+            <th>الاسم</th>
+            <th className='bg-primary text-white'>خيارات</th>
           </tr>
         </thead>
         <tbody>
@@ -18,11 +18,12 @@ const DeliveriesCompanies = ({ data }) => {
             <tr>
               <td>{cat.id}</td>
               <td>{cat.name}</td>
-              <td>
-                <Button>delete</Button> <Button>edit</Button>
+              <td className='d-flex justify-content-center'>
+              <button className='btn btn-danger mx-2'>حذف</button> 
+              <button className='btn btn-primary mx-2'>تعديل</button>
                 <FormControlLabel
                   control={<Checkbox name='Show' />}
-                  label='Show'
+                  label='إظهار'
                 />
               </td>
             </tr>

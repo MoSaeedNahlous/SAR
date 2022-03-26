@@ -3,14 +3,14 @@ import { Button, TextField } from '@mui/material';
 
 const DeliveriesComapnyForm = () => {
   return (
-    <form>
-      <h2>DeliveriesComapny</h2>
+    <form className='text-center'>
+      <h2 className='mb-3'>إضافة شركة توصيل</h2>
 
       <TextField label='اسم الشركة' variant='standard' />
-      <Button variant='contained' type='submit'>
+      <button className='btn btn-primary mx-2' type='submit'>
         Add
-      </Button>
-      <Button variant='outlined'>Edit</Button>
+      </button>
+      <button className='btn btn-outline-primary mx-2'>Edit</button>
     </form>
   );
 };
