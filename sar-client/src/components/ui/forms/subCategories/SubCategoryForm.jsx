@@ -1,8 +1,9 @@
 import { Button, CircularProgress, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../../../redux/actions/categoriesActions';
-import { cats } from '../categories/dummy-cats'
+import { SET_CURRENT_CATEGORY_RESET,SET_CURRENT_CATEGORY } from '../../../../redux/constants/categoriesConstants';
+
 
 const SubCategoryForm = () => {
   const dispatch = useDispatch();
@@ -10,13 +11,19 @@ const SubCategoryForm = () => {
   const categories = useSelector((state) => state.getCategories);
   const { categories: categoriesList, error, loading } = categories;
 
+  const currentCategory = useSelector((state) => state.setCurrentCategory);
+  const { currentCategories: current } = currentCategory;
+
+  const [currentSt, setCurrentSt] = useState()
+
   useEffect(() => {
+    dispatch({type:SET_CURRENT_CATEGORY_RESET})
     dispatch(getCategories());
   }, []);
 
-  if (loading) {
-    return <CircularProgress />;
-  }
+  
+
+  
   
   return (
     <form className='text-center'>
@@ -27,9 +34,19 @@ const SubCategoryForm = () => {
           sx={{width: '100%'}}
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
+          value={ current }
+          onChange={(e)=>setCurrentSt(e.target.value)}
         >
-          { categoriesList.map((cat) => (
-            <MenuItem value={cat.catID}>{cat.catName}</MenuItem>
+          {loading ?
+    <CircularProgress />
+  : categoriesList.map((cat) => (
+            <MenuItem
+              key={cat.catID}
+            //   onClick={
+            //   () => dispatch({ type: SET_CURRENT_CATEGORY, payload: cat })
+            // }
+              value={ cat.catID }>{ cat.catName }
+            </MenuItem>
           ))}
         </Select>
         <TextField  sx={{width: '100%'}} label="اسم الصنف الفرعي" variant="standard" />
