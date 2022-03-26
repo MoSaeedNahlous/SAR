@@ -16,8 +16,8 @@ const Categories = ({data}) => {
               <tbody>
                   { data.map(cat => (
                       <tr>
-                          <td>{ cat.id }</td>
-                          <td>{ cat.name }</td>
+                          <td>{ cat.catID }</td>
+                          <td>{ cat.catName }</td>
                           <td className='d-flex justify-content-center'><button className='btn btn-danger mx-2'>حذف</button> <button className='btn btn-primary'>تعديل</button>
                               <FormControlLabel control={
                   <Checkbox
