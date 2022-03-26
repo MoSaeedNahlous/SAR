@@ -13,12 +13,37 @@ export const getCategories = () => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `http://mhmodmj-001-site1.itempurl.com/api/Catgories`
+      `http://mhmodmj-001-site1.itempurl.com/api/categories`
     );
 
     dispatch({
       type: GET_CATEGORIES_SUCCESS,
-      payload: data.table,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_CATEGORIES_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addNewCategory = (name) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GET_CATEGORIES_REQUEST,
+    });
+
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
+    );
+
+    dispatch({
+      type: GET_CATEGORIES_SUCCESS,
+      payload: data,
     });
   } catch (error) {
     dispatch({

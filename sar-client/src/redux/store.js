@@ -5,6 +5,8 @@ import { getCategoriesReducer } from './reducers/categoriesReducers';
 import { getSubCategoriesReducer } from './reducers/subCategoriesReducers';
 import { loginReducer } from './reducers/authReducers';
 import {  getPostsReducer} from './reducers/postsReudcers';
+import { getCitiesReducer } from './reducers/citiesReducers';
+import { getDeliveryCompaniesReducer} from './reducers/deliveryCompaniesReducers';
 
 const initialState = {};
 
@@ -12,7 +14,9 @@ const reducer = combineReducers({
   getCategories: getCategoriesReducer,
   getSubCategories: getSubCategoriesReducer,
   getPosts :getPostsReducer,
-  login : loginReducer,
+  login: loginReducer,
+  getCities: getCitiesReducer,
+  getDeliveryCompanies:getDeliveryCompaniesReducer
 });
 
 const middleware = [thunk];
