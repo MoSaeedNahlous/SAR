@@ -1,7 +1,16 @@
 import { Button, Checkbox, FormControlLabel } from '@mui/material'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { SET_CURRENT_CATEGORY} from '../../../../redux/constants/categoriesConstants'
 
-const Categories = ({data}) => {
+const Categories = ({ data }) => {
+
+    const dispatch = useDispatch()
+    
+    const currentCategory = useSelector(state => state.setCurrentCategory)
+    const { currentCategory:current } = currentCategory
+
+
   return (
       <div>
           <h3 className='text-center mb-3'>الفئات</h3>
@@ -18,12 +27,18 @@ const Categories = ({data}) => {
                       <tr>
                           <td>{ cat.catID }</td>
                           <td>{ cat.catName }</td>
-                          <td className='d-flex justify-content-center'><button className='btn btn-danger mx-2'>حذف</button> <button className='btn btn-primary'>تعديل</button>
-                              <FormControlLabel control={
-                  <Checkbox
-                      name="Show"
-                  />
-              } label="إظهار" />
+                          <td className='d-flex justify-content-center'>
+                              <button className='btn btn-danger mx-2'>حذف</button>
+                              <button className='btn btn-primary'
+                                  onClick={
+                                      () => dispatch({ type: SET_CURRENT_CATEGORY,payload:cat }) }
+                              >تعديل</button>
+                              <FormControlLabel
+                                  control={
+                                    <Checkbox
+                                        name="Show"
+                                    />
+                                } label="إظهار" />
                           </td>
                       </tr>
                   ))}

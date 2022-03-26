@@ -4,6 +4,12 @@ import {
   GET_CATEGORIES_RESET,
   GET_CATEGORIES_SUCCESS,
 } from '../constants/categoriesConstants';
+
+import {
+  SET_CURRENT_CATEGORY,
+  SET_CURRENT_CATEGORY_RESET,
+
+} from '../constants/categoriesConstants';
 import axios from 'axios';
 
 export const getCategories = () => async (dispatch) => {
@@ -54,4 +60,11 @@ export const addNewCategory = (name) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const setCurrentCategory = (category) => async (dispatch) => {
+    dispatch({
+      type: SET_CURRENT_CATEGORY,
+      payload: category,
+    });
 };
