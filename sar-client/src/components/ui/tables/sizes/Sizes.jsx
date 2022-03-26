@@ -4,9 +4,21 @@ import { cats } from '../../forms/categories/dummy-cats'
 
 const Sizes = ({data}) => {
   return (
-     <div>
-          <h2>Sizes</h2>
-          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+     <div className='text-center mt-3'>
+          <h2>القياسات</h2>
+          <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
+            <InputLabel id="demo-simple-select-filled-label">الصنف الفرعي</InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+            >
+              { cats.map((cat) => (
+                <MenuItem value={cat.name}>{cat.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <br />
+          <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-filled-label">الصنف الفرعي</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
@@ -18,24 +30,12 @@ const Sizes = ({data}) => {
         </Select>
           </FormControl>
           <br />
-          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-filled-label">الصنف الفرعي</InputLabel>
-        <Select
-          labelId="demo-simple-select-filled-label"
-          id="demo-simple-select-filled"
-        >
-          { cats.map((cat) => (
-            <MenuItem value={cat.name}>{cat.name}</MenuItem>
-          ))}
-        </Select>
-          </FormControl>
-          <br />
-          <table>
-              <thead>
+          <table className='table table-striped w-75 mx-auto mt-4' dir='rtl'>
+              <thead className='bg-primary text-white'>
                   <tr>
-                      <td>ID</td>
-                      <td>Name</td>
-                      <td>Actions</td>
+                      <th>ID</th>
+                      <th>الاسم</th>
+                      <th>خيارات</th>
                   </tr>
               </thead>
               <tbody>
@@ -43,12 +43,12 @@ const Sizes = ({data}) => {
                       <tr>
                           <td>{ target.id }</td>
                           <td>{ target.name }</td>
-                          <td><Button>delete</Button> <Button>edit</Button>
+                          <td><button className='btn btn-danger'>حذف</button> <button className='btn btn-primary'>تعديل</button>
                               <FormControlLabel control={
                   <Checkbox
                       name="Show"
                   />
-              } label="Show" />
+              } label="إظهار" />
                           </td>
                       </tr>
                   ))}

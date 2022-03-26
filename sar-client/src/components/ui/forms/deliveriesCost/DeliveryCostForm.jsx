@@ -5,9 +5,9 @@ import { dComs } from '../../tables/deliveriesCosts/dummy-deliveries'
 
 const DeliveryCostForm = () => {
   return (
-      <form>
-      <h2>DeliveryCost</h2>
-      <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+      <form className='text-center' dir='rtl'>
+      <h2>أجرة التوصيل</h2>
+      <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-filled-label">المدينة</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
@@ -19,7 +19,7 @@ const DeliveryCostForm = () => {
         </Select>
       </FormControl>
           <br />
-          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+          <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-filled-label">شركة التوصيل</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
@@ -31,11 +31,11 @@ const DeliveryCostForm = () => {
         </Select>
           </FormControl>
           <br />
-      <TextField label="اجرة التوصيل" variant="standard" />
+      <TextField label="اجرة التوصيل" variant="standard" sx={{minWidth: '400px'}}/>
       <br />
       <br />
-          <Button variant="contained" type="submit">Add</Button>
-          <Button variant="outlined" >Edit</Button>
+          <button className="btn btn-primary mx-2" type="submit">أضف</button>
+          <button className="btn btn-outline-primary mx-2" type="button">تعديل</button>
       </form>
   )
 }
