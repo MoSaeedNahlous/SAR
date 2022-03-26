@@ -23,7 +23,7 @@ const SubCategoryForm = () => {
       <br />
           <Button variant="contained" type="submit">Add</Button>
           <Button variant="outlined" >Edit</Button>
-      </form>
+    </form>
   )
 }
 

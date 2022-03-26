@@ -4,13 +4,13 @@ import React from 'react'
 const Categories = ({data}) => {
   return (
       <div>
-          <h3>Categories </h3>
-          <table>
-              <thead>
-                  <tr>
-                      <td>ID</td>
-                      <td>Name</td>
-                      <td>Actions</td>
+          <h3 className='text-center mb-3'>الفئات</h3>
+          <table className='table table-striped mx-auto w-75' dir='rtl'>
+              <thead className='bg-primary text-white'>
+                  <tr className='py-5'>
+                      <th>ID</th>
+                      <th>الاسم</th>
+                      <th className='text-center'>خيارات</th>
                   </tr>
               </thead>
               <tbody>
@@ -18,12 +18,12 @@ const Categories = ({data}) => {
                       <tr>
                           <td>{ cat.id }</td>
                           <td>{ cat.name }</td>
-                          <td><Button>delete</Button> <Button>edit</Button>
+                          <td className='d-flex justify-content-center'><button className='btn btn-danger mx-2'>حذف</button> <button className='btn btn-primary'>تعديل</button>
                               <FormControlLabel control={
                   <Checkbox
                       name="Show"
                   />
-              } label="Show" />
+              } label="إظهار" />
                           </td>
                       </tr>
                   ))}

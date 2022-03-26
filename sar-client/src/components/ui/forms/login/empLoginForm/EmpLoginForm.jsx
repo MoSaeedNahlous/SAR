@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import { Button } from 'react-bootstrap'
 import {
   TextField,
   Box,
-  Button,
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
@@ -60,13 +60,9 @@ const EmpLoginForm = () => {
       </Box>
 
       <div className='mt-4 d-flex justify-content-around'>
-        <Button
-          className='px-5 btn btn-primary'
-          variant='contained'
-          type='submit'
-        >
-          دخول
-        </Button>
+      <Button variant="primary">
+      دخول
+      </Button>
         <FormControlLabel
           control={
             <Checkbox
