@@ -4,8 +4,7 @@ import React from 'react'
 const SubCategories = ({data}) => {
   return (
       <div>
-          <h3 className='text-center'>الأصناف الفرعية </h3>
-          <table className='table table-striped mx-auto w-75' dir='rtl'>
+          <table className='table table-striped mx-auto w-75 mt-5' dir='rtl'>
               <thead className='bg-primary text-white'>
                   <tr className='py-5'>
                       <th>ID</th>

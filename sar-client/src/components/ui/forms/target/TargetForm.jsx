@@ -3,12 +3,13 @@ import React from 'react'
 
 const TargetForm = () => {
   return (
-      <form>
-          <h2>Target</h2>
-          <TextField label='اسم المخصص' variant="standard" />
-          <Button variant="contained" type="submit">Add</Button>
-          <Button variant="outlined" >Edit</Button>
-      </form>
+    <form className='text-center mb-4'>
+        <h2 className='mb-3'>مخصص جديد</h2>
+
+        <TextField label='اسم المخصص' variant='standard' />
+        <button className='btn btn-primary mx-2'>إضافة</button>
+        <button className='btn btn-outline-primary'>تعديل</button>
+    </form>
           
     
   )
