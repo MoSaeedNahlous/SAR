@@ -5,7 +5,7 @@ import SubCategories from '../../../ui/tables/subCategories/SubCategories'
 
 const AddSubCategory = () => {
   return (
-    <div>AddSubCategory
+    <div>
       <SubCategoryForm />
       <SubCategories data={ cats }/>
     </div>

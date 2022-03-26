@@ -22,9 +22,8 @@ const AddCategory = () => {
   return (
     <div>
       {error && <Alert severity='error'>{error}</Alert>}
-      <h1>Add new Category</h1>
       <CategoryForm />
-      <Categories data={cats} />
+      <Categories data={categoriesList} />
     </div>
   );
 };

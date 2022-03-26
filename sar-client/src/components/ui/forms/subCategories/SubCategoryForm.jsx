@@ -1,8 +1,23 @@
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React from 'react'
+import { Button, CircularProgress, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories } from '../../../../redux/actions/categoriesActions';
 import { cats } from '../categories/dummy-cats'
 
 const SubCategoryForm = () => {
+  const dispatch = useDispatch();
+
+  const categories = useSelector((state) => state.getCategories);
+  const { categories: categoriesList, error, loading } = categories;
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+
+  if (loading) {
+    return <CircularProgress />;
+  }
+  
   return (
     <form className='text-center'>
       <h2 className='text-center mb-3'>الأصناف الفرعية</h2>
@@ -13,8 +28,8 @@ const SubCategoryForm = () => {
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
         >
-          { cats.map((cat) => (
-            <MenuItem value={cat.name}>{cat.name}</MenuItem>
+          { categoriesList.map((cat) => (
+            <MenuItem value={cat.catID}>{cat.catName}</MenuItem>
           ))}
         </Select>
         <TextField  sx={{width: '100%'}} label="اسم الصنف الفرعي" variant="standard" />
