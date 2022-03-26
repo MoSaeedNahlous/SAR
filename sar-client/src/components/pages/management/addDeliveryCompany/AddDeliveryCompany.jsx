@@ -6,7 +6,6 @@ import { dComs } from '../../../ui/tables/deliveriesCosts/dummy-deliveries';
 const AddDeliveryCompany = () => {
   return (
     <div>
-      <h2>AddDeliveryCompany</h2>
       <DeliveriesComapnyForm />
       <DeliveriesCompanies data={dComs} />
     </div>

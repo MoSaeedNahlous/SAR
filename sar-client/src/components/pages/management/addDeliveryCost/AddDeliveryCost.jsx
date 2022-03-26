@@ -6,7 +6,7 @@ import { dComs } from '../../../ui/tables/deliveriesCosts/dummy-deliveries'
 const AddDeliveryCost = () => {
   return (
       <div>
-          AddDeliveryCost
+          
           <DeliveryCostForm />
           <DeliveriesCosts data={dComs} />
     </div>

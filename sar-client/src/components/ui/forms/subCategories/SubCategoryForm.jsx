@@ -20,8 +20,8 @@ const SubCategoryForm = () => {
   
   return (
     <form className='text-center'>
-      <h2 className='text-center mb-3'>الأصناف الفرعية</h2>
-      <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+      <h2 className='text-center my-3 fw-bolder'>الأصناف الفرعية</h2>
+      <FormControl variant="filled" sx={{ m: 1, minWidth: 300 }}>
         <InputLabel id="demo-simple-select-filled-label">الصنف الرئيسي</InputLabel>
         <Select
           sx={{width: '100%'}}
@@ -32,7 +32,7 @@ const SubCategoryForm = () => {
             <MenuItem value={cat.catID}>{cat.catName}</MenuItem>
           ))}
         </Select>
-        <TextField  sx={{width: '100%'}} label="اسم الصنف الفرعي" variant="standard" />
+        <TextField  sx={{minWidth: '400px'}} label="اسم الصنف الفرعي" variant="standard" />
       </FormControl>
 
       <br />

@@ -5,7 +5,7 @@ import { dComs } from '../../tables/deliveriesCosts/dummy-deliveries'
 
 const DeliveryCostForm = () => {
   return (
-      <form className='text-center' dir='rtl'>
+      <form className='text-center mt-5' dir='rtl'>
       <h2>أجرة التوصيل</h2>
       <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-filled-label">المدينة</InputLabel>

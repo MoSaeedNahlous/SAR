@@ -6,7 +6,6 @@ import Targets from '../../../ui/tables/targets/Targets'
 const AddTarget = () => {
   return (
       <div>
-          AddTarget
           <TargetForm />
           <Targets data={cats} />
           

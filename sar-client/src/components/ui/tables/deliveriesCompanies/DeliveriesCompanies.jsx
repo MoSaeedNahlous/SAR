@@ -4,7 +4,7 @@ import { Button, Checkbox, FormControlLabel } from '@mui/material';
 const DeliveriesCompanies = ({ data }) => {
   return (
     <div className='text-center'>
-      <h3 className='my-4'>شركات التوصيل </h3>
+      <h3 className='my-5 fw-bold'>شركات التوصيل </h3>
       <table className='table table-striped w-75 mx-auto mt-2' dir='rtl'>
         <thead>
           <tr className='bg-primary text-white'>
