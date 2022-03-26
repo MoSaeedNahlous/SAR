@@ -12,7 +12,7 @@ export const getSubCategoriesReducer = (state = { subCategories: [] }, action) =
     case GET_SUBCATEGORIES_SUCCESS:
       return {
         loading: false,
-        subCategories: action.payload.products,
+        subCategories: action.payload.table,
       };
     case GET_SUBCATEGORIES_FAIL:
       return { loading: false, error: action.payload };
