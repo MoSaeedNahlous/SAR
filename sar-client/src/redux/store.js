@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { addCategoryReducer, getCategoriesReducer,setCurrentCategoryReducer } from './reducers/categoriesReducers';
-import { getSubCategoriesReducer } from './reducers/subCategoriesReducers';
+import { getSubCategoriesReducer, setCurrentSubCategoryReducer } from './reducers/subCategoriesReducers';
 import { loginReducer } from './reducers/authReducers';
 import {  getPostsReducer} from './reducers/postsReudcers';
 import { getCitiesReducer } from './reducers/citiesReducers';
@@ -18,7 +18,8 @@ const reducer = combineReducers({
   getCities: getCitiesReducer,
   getDeliveryCompanies: getDeliveryCompaniesReducer,
   addCategory:addCategoryReducer,
-  setCurrentCategory:setCurrentCategoryReducer
+  setCurrentCategory: setCurrentCategoryReducer,
+  setCurrentSubCategory:setCurrentSubCategoryReducer
   
 });
 

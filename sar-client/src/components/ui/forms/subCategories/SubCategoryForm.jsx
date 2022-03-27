@@ -6,27 +6,48 @@ import { SET_CURRENT_CATEGORY_RESET,SET_CURRENT_CATEGORY } from '../../../../red
 
 
 const SubCategoryForm = () => {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch()
+  
   const categories = useSelector((state) => state.getCategories);
   const { categories: categoriesList, error, loading } = categories;
 
-  const currentCategory = useSelector((state) => state.setCurrentCategory);
-  const { currentCategories: current } = currentCategory;
+    
+  const currentSubCategory = useSelector(state => state.setCurrentSubCategory)
+  const { currentSubCategory: current } = currentSubCategory
 
-  const [currentSt, setCurrentSt] = useState()
+  // const addCategorySt = useSelector(state => state.addCategory)
+  // const { loading:addingLoading , error:addingError } = addCategorySt
+
+
+
+  const [name, setName] = useState('')
+  const [catId, setCatId] = useState('')
+  
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [])
+  
 
   useEffect(() => {
-    dispatch({type:SET_CURRENT_CATEGORY_RESET})
-    dispatch(getCategories());
-  }, []);
+    if (current && current.subCatName) {
+      setName(current.subCatName)
+      setCatId(current.catID)
+    }
+  }, [current])
+  
+ 
 
+  const submitHandler = (e) => {
+    e.preventDefault()
+    
+  }
   
 
   
   
   return (
-    <form className='text-center'>
+    <form className='text-center' onSubmit={submitHandler}>
       <h2 className='text-center mb-3'>الأصناف الفرعية</h2>
       <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-filled-label">الصنف الرئيسي</InputLabel>
@@ -34,22 +55,26 @@ const SubCategoryForm = () => {
           sx={{width: '100%'}}
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
-          value={ current }
-          onChange={(e)=>setCurrentSt(e.target.value)}
+          value={ catId }
+          onChange={(e)=>setCatId(e.target.value)}
         >
           {loading ?
     <CircularProgress />
   : categoriesList.map((cat) => (
             <MenuItem
               key={cat.catID}
-            //   onClick={
-            //   () => dispatch({ type: SET_CURRENT_CATEGORY, payload: cat })
-            // }
               value={ cat.catID }>{ cat.catName }
             </MenuItem>
           ))}
         </Select>
-        <TextField  sx={{width: '100%'}} label="اسم الصنف الفرعي" variant="standard" />
+        <TextField sx={ { width: '100%' } }
+          label="اسم الصنف الفرعي"
+          onChange={
+          (e) => setName(e.target.value)
+        }
+        variant='standard'
+          value={ name }
+        />
       </FormControl>
 
       <br />
