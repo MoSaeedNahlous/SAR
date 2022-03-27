@@ -13,7 +13,7 @@ const Categories = ({ data }) => {
 
   return (
       <div>
-          <h3 className='text-center mb-3'>الفئات</h3>
+          <h3 className='text-center mb-3'>الأصناف الرئيسية</h3>
           <table className='table table-striped mx-auto w-75' dir='rtl'>
               <thead className='bg-primary text-white'>
                   <tr className='py-5'>
@@ -24,7 +24,7 @@ const Categories = ({ data }) => {
               </thead>
               <tbody>
                   { data.map(cat => (
-                      <tr>
+                      <tr key={cat.catID}>
                           <td>{ cat.catID }</td>
                           <td>{ cat.catName }</td>
                           <td className='d-flex justify-content-center'>

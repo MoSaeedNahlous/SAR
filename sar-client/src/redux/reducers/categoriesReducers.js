@@ -4,7 +4,8 @@ import {
     GET_CATEGORIES_RESET,
     GET_CATEGORIES_SUCCESS,
     SET_CURRENT_CATEGORY,
-    SET_CURRENT_CATEGORY_RESET
+    SET_CURRENT_CATEGORY_RESET,
+    ADD_CATEGORY_FAIL,ADD_CATEGORY_REQUEST,ADD_CATEGORY_RESET,ADD_CATEGORY_SUCCESS
 } from '../constants/categoriesConstants'
 
 export const getCategoriesReducer = (state = { categories: [] }, action) => {
@@ -18,6 +19,25 @@ export const getCategoriesReducer = (state = { categories: [] }, action) => {
             }
         case GET_CATEGORIES_FAIL:
             return { loading: false, error: action.payload }
+        default:
+            return state
+     }
+}
+
+export const addCategoryReducer = (state = {}, action) => {
+     switch (action.type) {
+        case ADD_CATEGORY_REQUEST:
+            return { loading: true}
+        case ADD_CATEGORY_SUCCESS:
+            return {
+                loading: false,
+                // categories: action.payload.table,
+            }
+        case ADD_CATEGORY_FAIL:
+             return {
+                 loading: false,
+                 error: action.payload
+             }
         default:
             return state
      }

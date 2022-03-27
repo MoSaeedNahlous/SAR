@@ -4,7 +4,8 @@ import { cats } from '../../../ui/forms/categories/dummy-cats';
 import Categories from '../../../ui/tables/categories/Categories';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../../../redux/actions/categoriesActions';
-import { Alert, CircularProgress } from '@mui/material';
+import { Alert, CircularProgress,Box } from '@mui/material';
+import { SET_CURRENT_CATEGORY_RESET } from '../../../../redux/constants/categoriesConstants';
 
 const AddCategory = () => {
   const dispatch = useDispatch();
@@ -13,11 +14,14 @@ const AddCategory = () => {
   const { categories: categoriesList, error, loading } = categories;
 
   useEffect(() => {
+    dispatch({type:SET_CURRENT_CATEGORY_RESET})
     dispatch(getCategories());
   }, []);
 
   if (loading) {
-    return <CircularProgress />;
+    return <Box sx={{ display: 'flex',justifyContent:'center' }}>
+      <CircularProgress size={100} color='grey' />
+    </Box>
   }
   return (
     <div>
