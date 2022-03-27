@@ -4,7 +4,7 @@ import { cats } from '../categories/dummy-cats'
 
 const SizeForm = () => {
   return (
-      <form className='text-center' dir='rtl'>
+      <form className='text-center mt-5' dir='rtl'>
         <h2>القياس</h2>
         <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
           <InputLabel id="demo-simple-select-filled-label">الصنف الرئيسي</InputLabel>

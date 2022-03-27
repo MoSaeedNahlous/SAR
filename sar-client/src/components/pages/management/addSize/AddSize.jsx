@@ -5,7 +5,7 @@ import Sizes from '../../../ui/tables/sizes/Sizes'
 
 const AddSize = () => {
   return (
-      <div>AddSize
+      <div>
           <SizeForm />
           <Sizes data={cats} />
     </div>
