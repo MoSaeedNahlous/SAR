@@ -47,9 +47,14 @@ export const addNewCategory = (name) => async (dispatch) => {
       type: ADD_CATEGORY_REQUEST,
     });
 
-    const body = {
-      
-    }
+    const body = { 
+          "level":"insert",
+          "CatID":"5",
+          "CatName":name,
+         "notes":"1",
+         "state":"1",
+          "images":"1"
+      }
 
     const { data } = await axios.post(
       `http://mhmodmj-001-site1.itempurl.com/api/categories`,body

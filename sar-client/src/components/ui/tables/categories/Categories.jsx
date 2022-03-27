@@ -1,14 +1,31 @@
-import { Button, Checkbox, FormControlLabel } from '@mui/material'
-import React from 'react'
+import { Button, Checkbox, CircularProgress, FormControlLabel } from '@mui/material'
+import { Box } from '@mui/system'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_CURRENT_CATEGORY} from '../../../../redux/constants/categoriesConstants'
+import { getCategories } from '../../../../redux/actions/categoriesActions'
+import { SET_CURRENT_CATEGORY, SET_CURRENT_CATEGORY_RESET} from '../../../../redux/constants/categoriesConstants'
 
-const Categories = ({ data }) => {
+const Categories = () => {
 
     const dispatch = useDispatch()
     
     const currentCategory = useSelector(state => state.setCurrentCategory)
-    const { currentCategory:current } = currentCategory
+    const { currentCategory: current } = currentCategory
+    
+    const categories = useSelector((state) => state.getCategories);
+    const { categories: categoriesList, error, loading } = categories;
+
+    useEffect(() => {
+        dispatch({type:SET_CURRENT_CATEGORY_RESET})
+        dispatch(getCategories());
+    }, []);
+
+
+    if (loading) {
+    return <Box sx={{ display: 'flex',justifyContent:'center' }}>
+      <CircularProgress size={100} color='grey' />
+    </Box>
+  }
 
 
   return (
@@ -23,7 +40,7 @@ const Categories = ({ data }) => {
                   </tr>
               </thead>
               <tbody>
-                  { data.map(cat => (
+                  { categoriesList.map(cat => (
                       <tr key={cat.catID}>
                           <td>{ cat.catID }</td>
                           <td>{ cat.catName }</td>

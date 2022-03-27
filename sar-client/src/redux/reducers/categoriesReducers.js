@@ -31,6 +31,7 @@ export const addCategoryReducer = (state = {}, action) => {
         case ADD_CATEGORY_SUCCESS:
             return {
                 loading: false,
+                success:true,
                 // categories: action.payload.table,
             }
         case ADD_CATEGORY_FAIL:
