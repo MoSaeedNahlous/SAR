@@ -8,26 +8,26 @@ const Sizes = ({data}) => {
           <h2>القياسات</h2>
           <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
             <InputLabel id="demo-simple-select-filled-label">الصنف الفرعي</InputLabel>
-            <Select
+            {/* <Select
               labelId="demo-simple-select-filled-label"
               id="demo-simple-select-filled"
             >
               { cats.map((cat) => (
                 <MenuItem value={cat.name}>{cat.name}</MenuItem>
               ))}
-            </Select>
+            </Select> */}
           </FormControl>
           <br />
           <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-filled-label">الصنف الفرعي</InputLabel>
-        <Select
+        {/* <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
         >
           { cats.map((cat) => (
             <MenuItem value={cat.name}>{cat.name}</MenuItem>
           ))}
-        </Select>
+        </Select> */}
           </FormControl>
           <br />
           <table className='table table-striped w-75 mx-auto mt-4' dir='rtl'>
@@ -39,7 +39,7 @@ const Sizes = ({data}) => {
                   </tr>
               </thead>
               <tbody>
-                  { data.map(target => (
+                  {/* { data.map(target => (
                       <tr>
                           <td>{ target.id }</td>
                           <td>{ target.name }</td>
@@ -51,7 +51,7 @@ const Sizes = ({data}) => {
               } label="إظهار" />
                           </td>
                       </tr>
-                  ))}
+                  ))} */}
               </tbody>
           </table>
       </div>

@@ -92,7 +92,10 @@ const Categories = () => {
                              } </button>
                               <button className='btn btn-primary'
                                   onClick={
-                                      () => dispatch({ type: SET_CURRENT_CATEGORY,payload:cat }) }
+                                      () => {
+                                          dispatch({ type: SET_CURRENT_CATEGORY, payload: cat }),
+                                        document.getElementById('root').scrollIntoView({behavior:'smooth'})
+                                      } }
                               >تعديل</button>
                               <FormControlLabel
                                   control={
