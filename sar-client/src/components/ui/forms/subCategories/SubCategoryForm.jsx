@@ -1,8 +1,8 @@
-import { Button, CircularProgress, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import { CircularProgress, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../../../redux/actions/categoriesActions';
-import { SET_CURRENT_CATEGORY_RESET,SET_CURRENT_CATEGORY } from '../../../../redux/constants/categoriesConstants';
+import { ADD_SUBCATEGORY_RESET, UPDATE_SUBCATEGORY_RESET } from '../../../../redux/constants/subCategoriesConstants'
 
 
 const SubCategoryForm = () => {
@@ -15,6 +15,12 @@ const SubCategoryForm = () => {
     
   const currentSubCategory = useSelector(state => state.setCurrentSubCategory)
   const { currentSubCategory: current } = currentSubCategory
+
+  const addSubCategorySt = useSelector(state => state.addSubCategory)
+  const { loading: addingLoading, success, error: addingError } = addSubCategorySt
+  
+  const updateSubCategorySt = useSelector((state) => state.updateSubCategory);
+  const { success:updateSuccess, error:updateError, loading:updateLoading } = updateSubCategorySt;
 
   // const addCategorySt = useSelector(state => state.addCategory)
   // const { loading:addingLoading , error:addingError } = addCategorySt
@@ -47,7 +53,11 @@ const SubCategoryForm = () => {
   
   
   return (
-    <form className='text-center' onSubmit={submitHandler}>
+    <form className='text-center' onSubmit={ submitHandler }>
+      { success && <Alert onClose={() => {dispatch({type:ADD_SUBCATEGORY_RESET})}}>تمت الإضافة بنجاح</Alert> }
+      { addingError && <Alert variant='error' onClose={ () => { dispatch({ type: ADD_SUBCATEGORY_RESET }) } }>{ addingError }</Alert> }
+      { updateSuccess && <Alert onClose={() => {dispatch({type:UPDATE_SUBCATEGORY_RESET})}}>تم التعديل بنجاح</Alert> }
+      { updateError && <Alert variant='error' onClose={ () => { dispatch({ type: UPDATE_SUBCATEGORY_RESET }) } }>{ updateError }</Alert>}
       <h2 className='text-center mb-3'>الأصناف الفرعية</h2>
       <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-filled-label">الصنف الرئيسي</InputLabel>

@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { addCategoryReducer, getCategoriesReducer,setCurrentCategoryReducer } from './reducers/categoriesReducers';
-import { getSubCategoriesReducer, setCurrentSubCategoryReducer } from './reducers/subCategoriesReducers';
+import { addCategoryReducer, deleteCategoryReducer, getCategoriesReducer,setCurrentCategoryReducer, updateCategoryReducer } from './reducers/categoriesReducers';
+import { addSubCategoryReducer, deleteSubCategoryReducer, getSubCategoriesReducer, setCurrentSubCategoryReducer, updateSubCategoryReducer,  } from './reducers/subCategoriesReducers';
 import { loginReducer } from './reducers/authReducers';
-import {  getPostsReducer} from './reducers/postsReudcers';
+import { getPostsReducer} from './reducers/postsReudcers';
 import { getCitiesReducer } from './reducers/citiesReducers';
 import { getDeliveryCompaniesReducer} from './reducers/deliveryCompaniesReducers';
 
@@ -17,8 +17,13 @@ const reducer = combineReducers({
   login: loginReducer,
   getCities: getCitiesReducer,
   getDeliveryCompanies: getDeliveryCompaniesReducer,
-  addCategory:addCategoryReducer,
+  addCategory: addCategoryReducer,
+  deleteCategory: deleteCategoryReducer,
+  updateCategory: updateCategoryReducer,
   setCurrentCategory: setCurrentCategoryReducer,
+  addSubCategory: addSubCategoryReducer,
+  deleteSubCategory: deleteSubCategoryReducer,
+  updateSubCategory:updateSubCategoryReducer,
   setCurrentSubCategory:setCurrentSubCategoryReducer
   
 });
