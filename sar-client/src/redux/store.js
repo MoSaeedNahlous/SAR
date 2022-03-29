@@ -6,7 +6,22 @@ import { addSubCategoryReducer, deleteSubCategoryReducer, getSubCategoriesReduce
 import { loginReducer } from './reducers/authReducers';
 import { getPostsReducer} from './reducers/postsReudcers';
 import { getCitiesReducer } from './reducers/citiesReducers';
-import { getDeliveryCompaniesReducer} from './reducers/deliveryCompaniesReducers';
+import { getDeliveryCompaniesReducer } from './reducers/deliveryCompaniesReducers';
+import {
+  addTargetReducer,
+  deleteTargetReducer,
+  getTargetsReducer,
+  setCurrentTargetReducer,
+  updateTargetReducer
+} from './reducers/targetReducers'
+
+import {
+  addSizeReducer,
+  deleteSizeReducer,
+  getSizesReducer,
+  setCurrentSizeReducer,
+  updateSizeReducer
+} from './reducers/sizesReducers'
 
 const initialState = {};
 
@@ -24,8 +39,17 @@ const reducer = combineReducers({
   addSubCategory: addSubCategoryReducer,
   deleteSubCategory: deleteSubCategoryReducer,
   updateSubCategory:updateSubCategoryReducer,
-  setCurrentSubCategory:setCurrentSubCategoryReducer
-  
+  setCurrentSubCategory: setCurrentSubCategoryReducer,
+  addTarget:addTargetReducer,
+  deleteTarget:deleteTargetReducer,
+  getTargets:getTargetsReducer,
+  setCurrentTarget:setCurrentTargetReducer,
+  updateTarget: updateTargetReducer,
+  addSize:addSizeReducer,
+  deleteSize:deleteSizeReducer,
+  getSizes:getSizesReducer,
+  setCurrentSize:setCurrentSizeReducer,
+  updateSize:updateSizeReducer,
 });
 
 const middleware = [thunk];

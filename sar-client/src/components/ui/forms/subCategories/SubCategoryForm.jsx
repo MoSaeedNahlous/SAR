@@ -69,14 +69,15 @@ const SubCategoryForm = () => {
           onChange={(e)=>setCatId(e.target.value)}
         >
           {loading ?
-    <CircularProgress />
-  : categoriesList.map((cat) => (
-            <MenuItem
-              key={cat.catID}
-              value={ cat.catID }>{ cat.catName }
-            </MenuItem>
+            <CircularProgress />
+            : categoriesList.map((cat) => (
+                  <MenuItem
+                    key={cat.catID}
+                    value={ cat.catID }>{ cat.catName }
+                  </MenuItem>
           ))}
         </Select>
+
         <TextField sx={ { width: '100%' } }
           label="اسم الصنف الفرعي"
           onChange={
