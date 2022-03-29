@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
-    <a className="navbar-brand" href="#">Navbar</a>
+    <Link className="navbar-brand" to="/">Navbar</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -64,9 +64,9 @@ const Navbar = () => {
                 <li> <Link className='dropdown-item' to={'/management/add-city'}>إضافة مدينة</Link> </li>
                 <li> <Link className='dropdown-item' to={'/management/add-delivery-cost'}>إضافة أجور التوصيل</Link> </li>
                 <li> <Link className='dropdown-item' to={'/management/add-delivery-company'}>إضافة شركة التوصيل</Link> </li>
-                {/* <li> <Link className='dropdown-item' to={''}>إضافة مندوب جديد</Link> </li>
-                <li> <Link className='dropdown-item' to={''}>إضافة منشور جديد</Link> </li>
-                <li> <Link className='dropdown-item' to={''}>إضافة ذبون جديد</Link> </li> */}
+                <li> <Link className='dropdown-item' to={'/management/add-employee'}>إضافة مندوب جديد</Link> </li>
+                <li> <Link className='dropdown-item' to={'/management/add-post'}>إضافة منشور جديد</Link> </li>
+                <li> <Link className='dropdown-item' to={'./management/add-customer'}>إضافة زبون جديد</Link> </li>
 
             </ul>
         </li>

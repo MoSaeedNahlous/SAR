@@ -7,7 +7,7 @@ const AddCategory = () => {
   return (
     <div>
       <CategoryForm />
-      <Categories/>
+      <Categories />
     </div>
   );
 };

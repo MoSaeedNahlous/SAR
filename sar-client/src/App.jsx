@@ -11,6 +11,9 @@ import AddDeliveryCompany from './components/pages/management/addDeliveryCompany
 import './bootstrap.min.css';
 import Navbar from './components/ui/navbar/Navbar';
 import AddProduct from './components/pages/products/addProduct/AddProduct';
+import AddPost from './components/pages/management/addPost/AddPost';
+import AddCustomer from './components/pages/management/addCustomer/AddCustomer';
+import AddEmp from './components/pages/management/addEmp/AddEmp';
 
 function App() {
   return (
@@ -38,7 +41,18 @@ function App() {
             path='/management/add-delivery-company'
             element={<AddDeliveryCompany />}
           />
-
+          <Route
+            path='/management/add-post'
+            element={<AddPost />}
+          />
+           <Route
+            path='/management/add-employee'
+            element={<AddEmp />}
+          />
+           <Route
+            path='/management/add-customer'
+            element={ <AddCustomer /> }
+          />
           {/* Products Routes */}
           <Route path='/products/add-product' element={<AddProduct />} />
         </Routes>

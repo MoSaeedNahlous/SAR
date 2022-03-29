@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-const Emps = () => {
+const Customer = () => {
   return (
     <div>
       <h2 className='text-center mt-5'>الموظفون</h2>
       <div class='form-group w-75 mb-3 mx-auto' dir='rtl'>
-        <label for='search-for-employee' class='form-label mt-4'>
-          البحث عن مندوب
+        <label for='customers' class='form-label mt-4'>
+          الزبائن
         </label>
         <input
-          type='text'
+          type='customers'
           class='form-control'
-          name='search-for-employee'
+          id='exampleInputEmail1'
           placeholder='اكتب اسم أو جزء من اسم المندوب'
         />
       </div>
@@ -21,14 +21,15 @@ const Emps = () => {
         <thead>
           <tr className='bg-primary text-white'>
             <th scope='col'>ID</th>
-            <th scope='col'>الاسم</th>
-            <th scope='col'>كلمة المرور</th>
-            <th scope='col'>الحي</th>
-            <th scope='col'>رقم الجوال الأول</th>
-            <th scope='col'>رقم الجوال الثاني</th>
-            <th scope='col'>البريد الإلكتروني</th>
-            <th scope='col'>الحي</th>
+            <th scope='col'>اسم الزبون</th>
+            <th scope='col'>العنوان </th>
+            <th scope='col'>اسم الحي</th>
+            <th scope='col'>رقم الجوال 1</th>
+            <th scope='col'>رقم الجوال 2</th>
+            <th scope='col'> الموقع</th>
             <th scope='col'>ملاحظات</th>
+            <th scope='col'>المدينة</th>
+            <th scope='col'>اسم المندوب</th>
             <th scope='col'>خيارات</th>
           </tr>
         </thead>
@@ -43,16 +44,6 @@ const Emps = () => {
           <td>@twitter</td>
           <td>@twitter</td>
           <td>@twitter</td>
-       
-        </tr>
-        <tr>
-        <td>1</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
           <td>@twitter</td>
           <td>@twitter</td>
        
@@ -67,6 +58,22 @@ const Emps = () => {
           <td>@twitter</td>
           <td>@twitter</td>
           <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+
+        </tr>
+        <tr>
+        <td>1</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
        
         </tr>
         <tr>
@@ -79,6 +86,8 @@ const Emps = () => {
           <td>@twitter</td>
           <td>@twitter</td>
           <td>@twitter</td>
+          <td>@twitter</td>
+          <td>@twitter</td>
        
         </tr>
         <tr>
@@ -91,9 +100,12 @@ const Emps = () => {
           <td>@twitter</td>
           <td>@twitter</td>
           <td>@twitter</td>
+          <td>@twitter</td>
+
           <td>
-              <button className='btn btn-primary mx-2'>تعديل</button>
-              <button className='btn btn-danger'>حذف</button>
+              <button className='btn btn-primary'>تعديل للتحديد</button>
+              <button className='btn btn-danger mx-2'>حذف</button>
+              <button className='btn btn-warning'>إلغاء الحظر</button>
               
           </td>
        
@@ -103,7 +115,7 @@ const Emps = () => {
       </div>
       
     </div>
-  );
-};
+  )
+}
 
-export default Emps;
+export default Customer
