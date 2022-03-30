@@ -40,7 +40,7 @@ const Navbar = () => {
           <a className="nav-link" aria-current="page" href="#">  إنشاء فاتورة</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="#">الطلبيات</a>
+          <Link className="nav-link" aria-current="page" to="/orders">الطلبيات</Link>
         </li>
         <li className='nav-item dropdown'>
             <a className='nav-link dropdown-toggle' href='' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
