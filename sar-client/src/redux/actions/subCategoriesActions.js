@@ -15,9 +15,13 @@ import {
   UPDATE_SUBCATEGORY_FAIL,
   UPDATE_SUBCATEGORY_REQUEST,
   UPDATE_SUBCATEGORY_RESET,
-  UPDATE_SUBCATEGORY_SUCCESS
+  UPDATE_SUBCATEGORY_SUCCESS,
+  HIDE_SUBCATEGORY_REQUEST,
+  SHOW_SUBCATEGORY_REQUEST,
+  SHOW_SUBCATEGORY_SUCCESS
 } from '../constants/subCategoriesConstants';
 import axios from 'axios';
+import { HIDE_CATEGORY_SUCCESS } from '../constants/categoriesConstants';
 
 export const getSubCategories = (catId) => async (dispatch) => {
   try {
@@ -52,17 +56,19 @@ export const addNewSubCategory = (catId,name) => async (dispatch) => {
       type: ADD_SUBCATEGORY_REQUEST,
     });
 
-    const body = { 
-          "level":"insert",
-          "CatID":"5",
-          "CatName":name,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+      "level": "insert",
+      "CatID":catId,
+      "CatName":"3",
+      "notes":"1",
+      "state":"1",
+      "images":"1",
+      "SubCatID":"2",
+      "SubCatName":name
       }
 
     const { data } = await axios.post(
-      `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories`,body
     );
 
     dispatch({
@@ -82,23 +88,26 @@ export const addNewSubCategory = (catId,name) => async (dispatch) => {
   }
 };
 
-export const deleteSubCategory = (id) => async (dispatch) => {
+export const deleteSubCategory = (subCatId) => async (dispatch) => {
   try {
     dispatch({
       type: DELETE_SUBCATEGORY_REQUEST,
     });
 
-    const body = { 
-          "level":"delete",
-          "CatID":id,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
-      }
+    const body = 
+                { "level":"delete",
+                  "CatID":"2",
+                    "CatName":"3",
+                  "notes":"1",
+                  "state":"1",
+                    "images":"1",
+                    "SubCatID":subCatId,
+                    "SubCatName":"uudou"
+                }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories`,body
+    );
 
     dispatch({
       type: DELETE_SUBCATEGORY_SUCCESS,
@@ -117,24 +126,26 @@ export const deleteSubCategory = (id) => async (dispatch) => {
   }
 };
 
-export const updateSubCategory = (catId,name) => async (dispatch) => {
+export const updateSubCategory = (catId,name,subCatId) => async (dispatch) => {
   try {
     dispatch({
       type: UPDATE_SUBCATEGORY_REQUEST,
     });
 
-    const body = { 
-          "level":"update",
-      "CatID": catId,
-          "CatName":name,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
-      }
+    const body = 
+                { "level":"update",
+                  "CatID":catId,
+                    "CatName":"3",
+                  "notes":"1",
+                  "state":"1",
+                    "images":"1",
+                    "SubCatID":subCatId,
+                    "SubCatName":name
+                }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories`,body
+    );
 
     dispatch({
       type: UPDATE_SUBCATEGORY_SUCCESS,
@@ -158,4 +169,53 @@ export const setCurrentSubCategory = (subCategory) => async (dispatch) => {
       type: SET_CURRENT_SUBCATEGORY,
       payload: subCategory,
     });
+};
+
+
+export const hideCategory = (id) => async (dispatch) => {
+  try {
+    dispatch({type:HIDE_SUBCATEGORY_REQUEST,payload:id})
+
+    const body = { 
+          "level":"hide",
+          "CatID":id,
+         "notes":"1",
+         "state":"1",
+          "images":"1"
+      }
+
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories`,body
+    );
+
+    dispatch({type:HIDE_CATEGORY_SUCCESS,payload:id})
+
+
+  } catch (error) {
+    
+    console.error(error);
+  }
+};
+export const showCategory = (id) => async (dispatch) => {
+  try {
+    dispatch({type:SHOW_SUBCATEGORY_REQUEST,payload:id})
+
+    const body = { 
+          "level":"show",
+          "CatID":id,
+         "notes":"1",
+         "state":"1",
+          "images":"1"
+      }
+
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories`,body
+    );
+    dispatch({type:SHOW_SUBCATEGORY_SUCCESS,payload:id})
+
+
+  } catch (error) {
+    
+    console.error(error);
+  }
 };
