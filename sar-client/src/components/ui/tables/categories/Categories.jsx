@@ -102,7 +102,7 @@ const Categories = () => {
                                       <Checkbox 
                                             defaultChecked ={ cat.cstate != 0 }
                                             name="Show"
-                                          onClick={ cat.cstate != 0 ?
+                                            onClick={ cat.cstate != 0 ?
                                               () => hideHandler(cat.catID) :
                                               () => showHandler(cat.catID)
                                           }

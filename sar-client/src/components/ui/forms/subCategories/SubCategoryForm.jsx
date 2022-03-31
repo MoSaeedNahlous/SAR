@@ -1,8 +1,9 @@
-import { CircularProgress, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import { Alert, CircularProgress, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../../../redux/actions/categoriesActions';
-import { ADD_SUBCATEGORY_RESET, UPDATE_SUBCATEGORY_RESET } from '../../../../redux/constants/subCategoriesConstants'
+import { addNewSubCategory, updateSubCategory } from '../../../../redux/actions/subCategoriesActions';
+import { ADD_SUBCATEGORY_RESET, SET_CURRENT_SUBCATEGORY_RESET, UPDATE_SUBCATEGORY_RESET } from '../../../../redux/constants/subCategoriesConstants'
 
 
 const SubCategoryForm = () => {
@@ -46,14 +47,25 @@ const SubCategoryForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    
+    dispatch(addNewSubCategory(catId,name))
+    document.getElementById('addCatForm').reset()
+    dispatch({ type: SET_CURRENT_SUBCATEGORY_RESET })
+    setName('')
+    setCatId('')
   }
   
+
+  const onClickHandler = () => {
+    dispatch(updateSubCategory(catId.toString(),name,current.subCatID))
+    document.getElementById('addCatForm').reset()
+    dispatch({ type: SET_CURRENT_SUBCATEGORY_RESET })
+    
+  }
 
   
   
   return (
-    <form className='text-center' onSubmit={ submitHandler }>
+    <form className='text-center' onSubmit={ submitHandler } id='addCatForm'>
       { success && <Alert onClose={() => {dispatch({type:ADD_SUBCATEGORY_RESET})}}>تمت الإضافة بنجاح</Alert> }
       { addingError && <Alert variant='error' onClose={ () => { dispatch({ type: ADD_SUBCATEGORY_RESET }) } }>{ addingError }</Alert> }
       { updateSuccess && <Alert onClose={() => {dispatch({type:UPDATE_SUBCATEGORY_RESET})}}>تم التعديل بنجاح</Alert> }
@@ -89,7 +101,7 @@ const SubCategoryForm = () => {
       </FormControl>
 
       <br />
-          <button type='button' className='btn btn-outline-primary mx-1'>تعديل</button>
+          <button type='button' className='btn btn-outline-primary mx-1' onClick={onClickHandler}>تعديل</button>
           <button type='submit' className='btn btn-primary mx-1'>إضافة</button>
          
     </form>

@@ -103,10 +103,15 @@ export const deleteCategory = (id) => async (dispatch) => {
       `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
     );
 
+    if(data.table[0].column1 === "cant delete it") {
+      throw new Error("لا يمكن حذف الصنف لوجود أصناف فرعية متعلقة فيه")
+    }
+
     dispatch({
       type: DELETE_CATEGORY_SUCCESS,
       payload: data,
     });
+
 
   } catch (error) {
     

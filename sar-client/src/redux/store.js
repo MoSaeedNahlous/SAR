@@ -23,6 +23,10 @@ import {
   updateSizeReducer
 } from './reducers/sizesReducers'
 
+import {
+  addEmpReducer,deleteEmpReducer,getEmpsReducer,setCurrentEmpReducer,updateEmpReducer
+} from './reducers/empsReducers'
+
 const initialState = {};
 
 const reducer = combineReducers({
@@ -49,7 +53,13 @@ const reducer = combineReducers({
   deleteSize:deleteSizeReducer,
   getSizes:getSizesReducer,
   setCurrentSize:setCurrentSizeReducer,
-  updateSize:updateSizeReducer,
+  updateSize: updateSizeReducer,
+  addEmp: addEmpReducer,
+  deleteEmp:deleteEmpReducer,
+  getEmps:getEmpsReducer,
+  setCurrentEmp:setCurrentEmpReducer,
+  updateEmp:updateEmpReducer
+  
 });
 
 const middleware = [thunk];
