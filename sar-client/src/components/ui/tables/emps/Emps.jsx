@@ -64,13 +64,13 @@ const Emps = () => {
           { deleteError && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_EMP_RESET }) } }>{ deleteError }</Alert> }
           
       <h2 className='text-center mt-5'>الموظفون</h2>
-      <div class='form-group w-75 mb-3 mx-auto' dir='rtl'>
-        <label for='search-for-employee' class='form-label mt-4'>
+      <div className='form-group w-75 mb-3 mx-auto' dir='rtl'>
+        <label htmlFor='search-for-employee' className='form-label mt-4'>
           البحث عن مندوب
         </label>
         <input
           type='text'
-          class='form-control'
+          className='form-control'
           name='search-for-employee'
           placeholder='اكتب اسم أو جزء من اسم المندوب'
         />

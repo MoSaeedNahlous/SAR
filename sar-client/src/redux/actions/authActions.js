@@ -6,15 +6,21 @@ import {
 } from '../constants/authConstants';
 import axios from 'axios';
 
-export const login = () => async (dispatch) => {
+export const login = (password,mobile1) => async (dispatch) => {
   try {
     dispatch({
       type: LOGIN_REQUEST,
     });
 
-    // const { data } = await axios.get(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/Catgories`
-    // );
+    const body ={
+      "level": "loginEmployee",
+      "password": password,
+      "mobile1": mobile1
+    }
+
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/Employee`
+    );
 
     dispatch({
       type: LOGIN_SUCCESS,

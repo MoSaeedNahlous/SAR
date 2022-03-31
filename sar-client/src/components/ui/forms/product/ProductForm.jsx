@@ -101,23 +101,23 @@ const ProductForm = () => {
             </label>
             <textarea className='form-control' type='text' id='productDetail' />
           </div>
-          <div class='mt-3'>
-            <label htmlFor='formFile1' class='form-label'>
+          <div className='mt-3'>
+            <label htmlFor='formFile1' className='form-label'>
               صورة
             </label>
-            <input class='form-control' type='file' id='formFile1' />
+            <input className='form-control' type='file' id='formFile1' />
           </div>
-          <div class='mt-3'>
-            <label htmlFor='formFile2' class='form-label'>
+          <div className='mt-3'>
+            <label htmlFor='formFile2' className='form-label'>
               صورة
             </label>
-            <input class='form-control' type='file' id='formFile2' />
+            <input className='form-control' type='file' id='formFile2' />
           </div>
-          <div class='mt-3'>
-            <label htmlFor='formFile3' class='form-label'>
+          <div className='mt-3'>
+            <label htmlFor='formFile3' className='form-label'>
               صورة
             </label>
-            <input class='form-control' type='file' id='formFile3' />
+            <input className='form-control' type='file' id='formFile3' />
           </div>
           <button type='submit' className='btn btn-primary mt-3'>
             إضافة

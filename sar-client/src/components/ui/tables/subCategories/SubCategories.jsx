@@ -1,7 +1,7 @@
 import { Alert, Box, Button, Checkbox, CircularProgress, FormControlLabel } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSubCategories,deleteSubCategory } from '../../../../redux/actions/subCategoriesActions'
+import { getSubCategories,deleteSubCategory,hideSubCategory,showSubCategory } from '../../../../redux/actions/subCategoriesActions'
 import { UPDATE_CATEGORY_RESET } from '../../../../redux/constants/categoriesConstants'
 import { ADD_SUBCATEGORY_RESET, DELETE_SUBCATEGORY_RESET, SET_CURRENT_SUBCATEGORY, SET_CURRENT_SUBCATEGORY_RESET, UPDATE_SUBCATEGORY_RESET} from '../../../../redux/constants/subCategoriesConstants'
 
@@ -42,11 +42,11 @@ const SubCategories = () => {
     }
 
     const showHandler = (id) => {
-        // dispatch(showSubCategory(id))
+        dispatch(showSubCategory(id))
     }
 
     const hideHandler = (id) => {
-        // dispatch(hideSubCategory(id))
+        dispatch(hideSubCategory(id))
     }
 
 

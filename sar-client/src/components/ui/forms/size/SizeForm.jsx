@@ -1,7 +1,6 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { cats } from '../categories/dummy-cats'
 import { SET_CURRENT_SIZE_RESET } from '../../../../redux/constants/sizesConstants'
 
 const SizeForm = () => {
@@ -9,14 +8,21 @@ const SizeForm = () => {
   
   const dispatch = useDispatch()
     
-  const currentSize = useSelector(state => state.setCurrentSize)
-  const { currentSize: current } = currentSize
 
-  const addSizeSt = useSelector(state => state.addSize)
-  const { loading: addingLoading, success, error: addingError } = addSizeSt
+  const categoriesSt = useSelector(state => state.getCategories)
+  const { categories, loading: catLoading, error: catError } = categoriesSt
   
-  const updateSizeSt = useSelector((state) => state.updateSize);
-  const { success:updateSuccess, error:updateError, loading:updateLoading } = updateSizeSt;
+  const subCategoriesSt = useSelector(state => state.getSubCategories)
+  const { subCategories,loading:subCatLoading,error:subCatError } = subCategoriesSt
+
+  // const currentSize = useSelector(state => state.setCurrentSize)
+  // const { currentSize: current } = currentSize
+
+  // const addSizeSt = useSelector(state => state.addSize)
+  // const { loading: addingLoading, success, error: addingError } = addSizeSt
+  
+  // const updateSizeSt = useSelector((state) => state.updateSize);
+  // const { success:updateSuccess, error:updateError, loading:updateLoading } = updateSizeSt;
 
 
   const [name, setName] = useState('')
@@ -46,26 +52,26 @@ const SizeForm = () => {
         <h2>القياس</h2>
         <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
           <InputLabel id="demo-simple-select-filled-label">الصنف الرئيسي</InputLabel>
-          {/* <Select
+          <Select
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
           >
-            { cats.map((cat) => (
-              <MenuItem value={cat.name}>{cat.name}</MenuItem>
+            { categories.map((cat) => (
+              <MenuItem key={cat.catID }value={cat.catID}>{cat.catName}</MenuItem>
             ))}
-          </Select> */}
+          </Select>
         </FormControl>
         <br />
         <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
           <InputLabel id="demo-simple-select-filled-label">الصنف الفرعي</InputLabel>
-          {/* <Select
+          <Select
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
           >
-            { cats.map((cat) => (
-              <MenuItem value={cat.name}>{cat.name}</MenuItem>
+            { subCategories.map((subCat) => (
+              <MenuItem  key={subCat.subCatID} value={subCat.subCatID}>{subCat.subCatName}</MenuItem>
             ))}
-          </Select> */}
+          </Select>
         </FormControl>
             <br />
             <TextField label="اسم القياس" variant="standard" sx={{minWidth: '400px'}}/>

@@ -4,13 +4,13 @@ const Customer = () => {
   return (
     <div>
       <h2 className='text-center mt-5'>الموظفون</h2>
-      <div class='form-group w-75 mb-3 mx-auto' dir='rtl'>
-        <label for='customers' class='form-label mt-4'>
+      <div className='form-group w-75 mb-3 mx-auto' dir='rtl'>
+        <label htmlFor='customers' className='form-label mt-4'>
           الزبائن
         </label>
         <input
           type='customers'
-          class='form-control'
+          className='form-control'
           id='exampleInputEmail1'
           placeholder='اكتب اسم أو جزء من اسم المندوب'
         />

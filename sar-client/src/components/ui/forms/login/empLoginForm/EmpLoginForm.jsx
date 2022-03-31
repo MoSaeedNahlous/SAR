@@ -7,11 +7,19 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
-import { AccountCircle, Key } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux'
+import { AccountCircle, Key,LocalPhone } from '@mui/icons-material';
+import { login } from '../../../../../redux/actions/authActions';
 
 const EmpLoginForm = () => {
+
+  const dispatch = useDispatch()
+
+  const loginSt = useSelector(state => state.login)
+  const { loading ,success, error } = loginSt
+
   const [formInfo, setFormInfo] = useState({
-    username: '',
+    mobile1: '',
     password: '',
     rememberMe: false,
   });
@@ -23,7 +31,7 @@ const EmpLoginForm = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    // Login http request function go here
+    dispatch(login(formInfo.password,formInfo.mobile1))
   };
 
   return (
@@ -32,14 +40,15 @@ const EmpLoginForm = () => {
       <Box
         sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
-        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <LocalPhone sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField
           className='mb-3 w-100'
-          id='username'
-          label='اسم المستخدم'
-          value={formInfo.username}
+          id='mobile1'
+          label='رقم الجوال'
+          value={formInfo.mobile1}
           variant='standard'
-          name='username'
+          type={'number'}
+          name='mobile1'
           onChange={onChangeHandler}
         />
       </Box>
@@ -49,9 +58,9 @@ const EmpLoginForm = () => {
         <Key sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField
           className='mb-3 w-100'
-          d='password'
+          id='password'
           label='كلمة السر'
-          value={formInfo.passowrd}
+          value={formInfo.password}
           variant='standard'
           name='password'
           type={'password'}
@@ -60,7 +69,7 @@ const EmpLoginForm = () => {
       </Box>
 
       <div className='mt-4 d-flex justify-content-around'>
-      <Button variant="primary">
+      <Button variant="primary" type='submit'>
       دخول
       </Button>
         <FormControlLabel
