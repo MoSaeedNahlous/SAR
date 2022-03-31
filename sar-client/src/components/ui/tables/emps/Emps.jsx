@@ -77,48 +77,50 @@ const Emps = () => {
       </div>
 
       <div className='container-fluid px-5'>
-      <table className='table table-striped mx-auto' dir='rtl'>
-        <thead>
-          <tr className='bg-primary text-white'>
-            <th scope='col'>ID</th>
-            <th scope='col'>الاسم</th>
-            <th scope='col'>كلمة المرور</th>
-            <th scope='col'>رقم الجوال الأول</th>
-            <th scope='col'>رقم الجوال الثاني</th>
-            <th scope='col'>البريد الإلكتروني</th>
-            <th scope='col'>الحي</th>
-            <th scope='col'>ملاحظات</th>
-            <th scope='col'>خيارات</th>
-          </tr>
-        </thead>
-          <tbody style={ { fontSize: '0.9rem' } }>
-            { empsList.map((emp) => (
-              <tr key={emp.empId}>
-                <td>{ emp.empId }</td>
-                <td>{ emp.empName }</td>
-                <td>{ emp.password }</td>
-                <td>{ emp.mobile1 }</td>
-                <td>{ emp.mobile2 }</td>
-                <td>{ emp.email }</td>
-                <td>{ emp.address1 }</td>
-                <td>{ emp.notes }</td>
-          <td>
-              <button className='btn btn-primary mx-2'onClick={
-                                      () => {
-                                          dispatch({ type: SET_CURRENT_EMP, payload: emp }),
-                                        document.getElementById('root').scrollIntoView({behavior:'smooth'})
-                                      } }
-                              >تعديل</button>
-              <button className='btn btn-danger'>حذف</button>
-              
-          </td>
-       
-        </tr>
-            ))}
-        
-        
-        </tbody>
-      </table>
+      <div className='table-responsive'>
+          <table className='table table-bordered table-striped mx-auto' dir='rtl'>
+            <thead>
+              <tr className='bg-primary text-white'>
+                <th scope='col'>ID</th>
+                <th scope='col'>الاسم</th>
+                <th scope='col'>كلمة المرور</th>
+                <th scope='col'>رقم الجوال الأول</th>
+                <th scope='col'>رقم الجوال الثاني</th>
+                <th scope='col'>البريد الإلكتروني</th>
+                <th scope='col'>الحي</th>
+                <th scope='col'>ملاحظات</th>
+                <th scope='col'>خيارات</th>
+              </tr>
+            </thead>
+              <tbody style={ { fontSize: '0.9rem' } }>
+                { empsList.map((emp) => (
+                  <tr key={emp.empId}>
+                    <td>{ emp.empId }</td>
+                    <td>{ emp.empName }</td>
+                    <td>{ emp.password }</td>
+                    <td>{ emp.mobile1 }</td>
+                    <td>{ emp.mobile2 }</td>
+                    <td>{ emp.email }</td>
+                    <td>{ emp.address1 }</td>
+                    <td>{ emp.notes }</td>
+              <td>
+                  <button style={{width: '75px'}} className='btn btn-primary mx-2 my-1'onClick={
+                                          () => {
+                                              dispatch({ type: SET_CURRENT_EMP, payload: emp }),
+                                            document.getElementById('root').scrollIntoView({behavior:'smooth'})
+                                          } }
+                                  >تعديل</button>
+                  <button style={{width: '75px'}} className='btn btn-danger mx-2'>حذف</button>
+                  
+              </td>
+          
+            </tr>
+                ))}
+            
+            
+            </tbody>
+          </table>
+      </div>
       </div>
       
     </div>

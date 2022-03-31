@@ -3,7 +3,7 @@ import React from 'react'
 const Customer = () => {
   return (
     <div>
-      <h2 className='text-center mt-5'>الموظفون</h2>
+      <h2 className='text-center mt-5'>الزبائن</h2>
       <div class='form-group w-75 mb-3 mx-auto' dir='rtl'>
         <label for='customers' class='form-label mt-4'>
           الزبائن
@@ -87,7 +87,9 @@ const Customer = () => {
           <td>@twitter</td>
           <td>@twitter</td>
           <td>@twitter</td>
-          <td>@twitter</td>
+          <td>
+              Tw
+          </td>
        
         </tr>
         <tr>
@@ -103,9 +105,12 @@ const Customer = () => {
           <td>@twitter</td>
 
           <td>
-              <button className='btn btn-primary'>تعديل للتحديد</button>
-              <button className='btn btn-danger mx-2'>حذف</button>
-              <button className='btn btn-warning'>إلغاء الحظر</button>
+            <div className='d-flex justify-content-around'>
+              <button className='btn btn-primary mx-1 btn-sm'>تعديل للتحديد</button>
+              <button className='btn btn-danger mx-1 btn-sm'>حذف</button>
+              <button className='btn btn-warning mx-1 btn-sm'>إلغاء الحظر</button>
+            </div>
+             
               
           </td>
        

@@ -93,12 +93,12 @@ const AddCustomerForm = () => {
           <label htmlFor='notes' className='form-label'>ملاحظات</label>
           <textarea className='form-control' type='text' name='notes'></textarea>
         </div>     
-          <div className='d-flex justify-content-between'>
-            <button type='submit' className='btn btn-primary mt-3 px-5'>
+          <div>
+            <button type='submit' className='btn btn-primary mt-3 px-5 me-2' style={{width: '200px'}}>
               إنشاء حساب
             </button>
 
-            <button type='submit' className='btn btn-outline-primary mt-3 px-5'>
+            <button type='submit' className='btn btn-outline-primary mt-3 px-5 me-2' style={{width: '200px'}}>
               تعديل
             </button>
           </div>
