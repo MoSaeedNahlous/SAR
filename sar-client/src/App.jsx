@@ -14,6 +14,7 @@ import AddProduct from './components/pages/products/addProduct/AddProduct';
 import AddPost from './components/pages/management/addPost/AddPost';
 import AddCustomer from './components/pages/management/addCustomer/AddCustomer';
 import AddEmp from './components/pages/management/addEmp/AddEmp';
+import OrderPage from './components/pages/orders/OrderPage';
 
 function App() {
   return (
@@ -53,8 +54,14 @@ function App() {
             path='/management/add-customer'
             element={ <AddCustomer /> }
           />
+         
           {/* Products Routes */}
           <Route path='/products/add-product' element={<AddProduct />} />
+          {/* Orders Route  */}
+          <Route
+            path='/orders'
+            element={ <OrderPage /> }
+           />
         </Routes>
       </Router>
     </div>
