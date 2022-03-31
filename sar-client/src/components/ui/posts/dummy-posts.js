@@ -1,5 +1,5 @@
 export const posts = [{id:1,
-    desc:'loremhuehffefwefwefwgefvugwevf igwvy',date:'343/343'
+    desc:'بيجامه نصف كم صناعه سوريا من اجود انواع الاقمشه منتج عالي الجوده خليط قطن مع ليكره الاختلاف بين الصوره العرض والصوره يلي على الأرض لون الطبعه فقط اللون الحقيقي هوي يلي على الأرض',date:'343/343'
 },
 {id:2,
     desc:'loremhuehffefwefwefwgefvugwevf igwvy',date:'343/343'

@@ -148,7 +148,8 @@ const Orders = () => {
             </div>
            
            <div className='mt-5'>
-               <table className='table table-striped table-sm'>
+           <div className='table-responsive'>
+                <table className='table table-striped table-bordered table-sm'>
                    <thead className='bg-primary text-white'>
                        <th>التاريخ</th>
                        <th>ملاحظات</th>
@@ -174,13 +175,15 @@ const Orders = () => {
                    </tbody>
                </table>
            </div>
+             
+           </div>
         </div>
        
 
 
         {/* Orders Table  */}
         <div className='table-responsive'>
-            <table className='table table-striped orders-table'> 
+            <table className='table table-striped table-hover table-bordered orders-table'> 
                 <thead>
                     <th>تاريخ إنشاء الطلبية</th>
                     <th>اسم البائع</th>
@@ -209,9 +212,13 @@ const Orders = () => {
                         <td>54</td>
                         <td>1</td>
                         <td>
-                            <button className='btn btn-sm btn-primary'>تم التسليم</button>
-                            <button className='btn btn-sm btn-danger mx-2'>إلغاء</button>
-                            <button className='btn btn-sm btn-light'> اختيار </button>
+
+                            <div className='d-flex justify-content-around'>
+                                <button className='btn btn-sm btn-primary'>تم التسليم</button>
+                                <button className='btn btn-sm btn-danger'>إلغاء</button>
+                                <button className='btn btn-sm btn-light'> اختيار </button>
+                            </div>
+                          
                         </td>
                     </tr>
                 </tbody>

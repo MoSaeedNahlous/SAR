@@ -68,6 +68,7 @@ const Categories = () => {
           { deleteError && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_CATEGORY_RESET }) } }>{ deleteError }</Alert> }
           
           <h3 className='text-center mb-3'>الأصناف الرئيسية</h3>
+          
           <table className='table table-striped mx-auto w-75' dir='rtl'>
               <thead className='bg-primary text-white'>
                   <tr className='py-5'>
