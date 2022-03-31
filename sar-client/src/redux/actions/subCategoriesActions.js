@@ -30,9 +30,9 @@ export const getSubCategories = (catId) => async (dispatch) => {
     });
 
     const { data } = catId ? await axios.get(
-      `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=selectbycat&CatID=${catId}`
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=selectM&CatID=${catId}`
     ) : await axios.get(
-      `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=select&CatID=${1}`
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=selectM&CatID=${1}`
     )
 
     dispatch({
@@ -172,16 +172,19 @@ export const setCurrentSubCategory = (subCategory) => async (dispatch) => {
 };
 
 
-export const hideCategory = (id) => async (dispatch) => {
+export const hideSubCategory = (id) => async (dispatch) => {
   try {
     dispatch({type:HIDE_SUBCATEGORY_REQUEST,payload:id})
 
-    const body = { 
-          "level":"hide",
-          "CatID":id,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+      "level": "hide",
+      "CatID":"1",
+      "CatName":"3",
+      "notes":"1",
+      "state":"1",
+      "images":"1",
+      "SubCatID":id,
+      "SubCatName":"name"
       }
 
     const { data } = await axios.post(
@@ -196,16 +199,19 @@ export const hideCategory = (id) => async (dispatch) => {
     console.error(error);
   }
 };
-export const showCategory = (id) => async (dispatch) => {
+export const showSubCategory = (id) => async (dispatch) => {
   try {
     dispatch({type:SHOW_SUBCATEGORY_REQUEST,payload:id})
 
-    const body = { 
-          "level":"show",
-          "CatID":id,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+      "level": "show",
+      "CatID":"1",
+      "CatName":"3",
+      "notes":"1",
+      "state":"1",
+      "images":"1",
+      "SubCatID":id,
+      "SubCatName":"name"
       }
 
     const { data } = await axios.post(

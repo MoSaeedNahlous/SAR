@@ -49,7 +49,7 @@ export const getEmps = () => async (dispatch) => {
   }
 };
 
-export const addNewEmp = (empName,add1,add2,password,notes,mob1,mob2,email,cityId) => async (dispatch) => {
+export const addNewEmp = (empName,add1,add2,password,notes,mob1,mob2,email) => async (dispatch) => {
   try {
     dispatch({
       type: ADD_EMP_REQUEST,
@@ -65,7 +65,7 @@ export const addNewEmp = (empName,add1,add2,password,notes,mob1,mob2,email,cityI
             "notes": notes,
             "totalpaid": "0",
             "totalRemain": "0",
-            "IsBlocked": "-",
+            "IsBlocked": "",
             "mobile1": mob1,
             "mobile2": mob2,
             "Email": email,
@@ -97,6 +97,7 @@ export const addNewEmp = (empName,add1,add2,password,notes,mob1,mob2,email,cityI
 };
 
 export const deleteEmp = (empId) => async (dispatch) => {
+
   try {
     dispatch({
       type: DELETE_EMP_REQUEST,
@@ -150,20 +151,34 @@ export const deleteEmp = (empId) => async (dispatch) => {
   }
 };
 
-// export const hideCategory = (id) => async (dispatch) => {
+// export const hideEmp = (empId) => async (dispatch) => {
 //   try {
 //     dispatch({type:HIDE_EMP_REQUEST,payload:id})
 
-//     const body = { 
-//           "level":"hide",
-//           "CatID":id,
-//          "notes":"1",
-//          "state":"1",
-//           "images":"1"
-//       }
+//     const body = {
+//             "level": "hide",
+//             "empId": empId,
+//             "empName": "empName",
+//             "empType": "e",
+//             "password": "password",
+//             "BlockReason": "",
+//             "address2":"add2",
+//             "notes": "notes",
+//             "totalpaid": "0",
+//             "totalRemain": "0",
+//             "IsBlocked": "-",
+//             "mobile1": "mob1",
+//             "mobile2": "mob2",
+//             "Email": "email",
+//             "address1": "add1",
+//             "gender": "",
+//             "state": "",
+//             "images": "",
+//             "CityID": "cityId"
+//             }
 
 //     const { data } = await axios.post(
-//       `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
+//        `http://mhmodmj-001-site1.itempurl.com/api/Employee`,body
 //     );
 
 //     dispatch({type:HIDE_EMP_SUCCESS,payload:id})
@@ -174,20 +189,34 @@ export const deleteEmp = (empId) => async (dispatch) => {
 //     console.error(error);
 //   }
 // };
-// export const showCategory = (id) => async (dispatch) => {
+// export const showEmp = (empId) => async (dispatch) => {
 //   try {
-//     dispatch({type:SHOW_EMP_REQUEST,payload:id})
+//     dispatch({type:SHOW_EMP_REQUEST,payload:empId})
 
-//     const body = { 
-//           "level":"show",
-//           "CatID":id,
-//          "notes":"1",
-//          "state":"1",
-//           "images":"1"
-//       }
+//     const body = {
+//             "level": "show",
+//             "empId": empId,
+//             "empName": "empName",
+//             "empType": "e",
+//             "password": "password",
+//             "BlockReason": "",
+//             "address2":"add2",
+//             "notes": "notes",
+//             "totalpaid": "0",
+//             "totalRemain": "0",
+//             "IsBlocked": "-",
+//             "mobile1": "mob1",
+//             "mobile2": "mob2",
+//             "Email": "email",
+//             "address1": "add1",
+//             "gender": "",
+//             "state": "",
+//             "images": "",
+//             "CityID": "cityId"
+//             }
 
 //     const { data } = await axios.post(
-//       `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
+//       `http://mhmodmj-001-site1.itempurl.com/api/Employee`,body
 //     );
 //     dispatch({type:SHOW_EMP_SUCCESS,payload:id})
 
@@ -198,7 +227,7 @@ export const deleteEmp = (empId) => async (dispatch) => {
 //   }
 // };
 
-export const updateEmp = (empName,add1,add2,password,notes,mob1,mob2,email,cityId) => async (dispatch) => {
+export const updateEmp = (empName,add1,add2,password,notes,mob1,mob2,email) => async (dispatch) => {
   try {
     dispatch({
       type: UPDATE_EMP_REQUEST,
@@ -210,7 +239,7 @@ export const updateEmp = (empName,add1,add2,password,notes,mob1,mob2,email,cityI
             "empType": "e",
             "password": password,
             "BlockReason": "",
-            "address2":"add2",
+            "address2":add2,
             "notes": notes,
             "totalpaid": "0",
             "totalRemain": "0",
@@ -222,7 +251,7 @@ export const updateEmp = (empName,add1,add2,password,notes,mob1,mob2,email,cityI
             "gender": "",
             "state": "",
             "images": "",
-            "CityID": cityId
+            "CityID": ""
             }
 
     const { data } = await axios.post(

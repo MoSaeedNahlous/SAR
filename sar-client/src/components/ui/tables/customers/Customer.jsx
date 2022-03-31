@@ -10,7 +10,7 @@ const Customer = () => {
         </label>
         <input
           type='customers'
-          class='form-control'
+          className='form-control'
           id='exampleInputEmail1'
           placeholder='اكتب اسم أو جزء من اسم المندوب'
         />

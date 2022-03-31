@@ -65,21 +65,21 @@ const Orders = () => {
                     </form>
                 </div>
             ) }
-            <ul class="nav justify-content-center mt-5">
-              <li class="nav-item">
-                    <span class="nav-link border" style={{cursor: 'pointer'}}>ملغاة</span>
+            <ul className="nav justify-content-center mt-5">
+              <li className="nav-item">
+                    <span className="nav-link border" style={{cursor: 'pointer'}}>ملغاة</span>
                 </li>
-                <li class="nav-item">
-                    <span class="nav-link border" style={{cursor: 'pointer'}}>غير مكتملة</span>
+                <li className="nav-item">
+                    <span className="nav-link border" style={{cursor: 'pointer'}}>غير مكتملة</span>
                 </li>
-                <li class="nav-item">
-                    <span class="nav-link border" style={{cursor: 'pointer'}}>تم التسليم</span>
+                <li className="nav-item">
+                    <span className="nav-link border" style={{cursor: 'pointer'}}>تم التسليم</span>
                 </li>
-                <li class="nav-item">
-                    <span class="nav-link border" style={{cursor: 'pointer'}}>قيد العمل</span>
+                <li className="nav-item">
+                    <span className="nav-link border" style={{cursor: 'pointer'}}>قيد العمل</span>
                 </li>
-                <li class="nav-item">
-                    <span class="nav-link border" style={{cursor: 'pointer'}}>في الانتظار </span>
+                <li className="nav-item">
+                    <span className="nav-link border" style={{cursor: 'pointer'}}>في الانتظار </span>
                 </li>
             </ul>
             <div>

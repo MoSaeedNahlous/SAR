@@ -13,7 +13,7 @@ export const loginReducer = (state = { user: {} }, action) => {
     case LOGIN_SUCCESS:
       return {
         loading: false,
-        user: action.payload.products,
+        user: action.payload.table,
       };
     case LOGIN_FAIL:
       return { loading: false, error: action.payload };

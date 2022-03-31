@@ -46,7 +46,7 @@ const EmpForm = () => {
       data.email))
     document.getElementById('addEmpForm').reset()
     dispatch({ type: SET_CURRENT_EMP_RESET })
-    setName({
+    setData({
     empName: '',
     mobile1: '',
     mobile2: '',
@@ -151,7 +151,7 @@ const EmpForm = () => {
                   value={ data.address2 }
                   onChange={ onChangeHandler }
                   className='form-control'
-                  type='number'
+                  type='text'
                 />
               </div>
           </div>
