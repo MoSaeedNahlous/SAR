@@ -68,51 +68,54 @@ const Categories = () => {
           { deleteError && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_CATEGORY_RESET }) } }>{ deleteError }</Alert> }
           
           <h3 className='text-center mb-3'>الأصناف الرئيسية</h3>
-          <table className='table table-striped mx-auto w-75' dir='rtl'>
-              <thead className='bg-primary text-white'>
-                  <tr className='py-5'>
-                      <th>ID</th>
-                      <th>الاسم</th>
-                      <th className='text-center'>خيارات</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  { categoriesList.map(cat => (
-                      <tr key={cat.catID}>
-                          <td>{ cat.catID }</td>
-                          <td>{ cat.catName }</td>
-                          <td className='d-flex justify-content-center'>
-                              <button
-                                  className='btn btn-danger mx-2'
-                                  disabled={ deleteLoading }
-                                  onClick={()=>deleteHandler(cat.catID)}
-                              >
-                                  {deleteLoading ?  <CircularProgress color="inherit"  size={15} /> :
-                                  'حذف'
-                             } </button>
-                              <button className='btn btn-primary'
-                                  onClick={
-                                      () => {
-                                          dispatch({ type: SET_CURRENT_CATEGORY, payload: cat }),
-                                        document.getElementById('root').scrollIntoView({behavior:'smooth'})
-                                      } }
-                              >تعديل</button>
-                              <FormControlLabel
-                                  control={
-                                      <Checkbox 
-                                            defaultChecked ={ cat.cstate != 0 }
-                                            name="Show"
-                                          onClick={ cat.cstate != 0 ?
-                                              () => hideHandler(cat.catID) :
-                                              () => showHandler(cat.catID)
-                                          }
-                                    />
-                                } label="إظهار" />
-                          </td>
-                      </tr>
-                  ))}
-              </tbody>
-          </table>
+          <div className='table-responsive'>
+                <table className='table table-striped table-bordered mx-auto w-75' dir='rtl'>
+                    <thead className='bg-primary text-white'>
+                        <tr className='py-5'>
+                            <th>ID</th>
+                            <th>الاسم</th>
+                            <th className='text-center'>خيارات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { categoriesList.map(cat => (
+                            <tr key={cat.catID}>
+                                <td>{ cat.catID }</td>
+                                <td>{ cat.catName }</td>
+                                <td className='d-flex justify-content-center'>
+                                    <button
+                                        className='btn btn-danger mx-2'
+                                        disabled={ deleteLoading }
+                                        onClick={()=>deleteHandler(cat.catID)}
+                                    >
+                                        {deleteLoading ?  <CircularProgress color="inherit"  size={15} /> :
+                                        'حذف'
+                                    } </button>
+                                    <button className='btn btn-primary'
+                                        onClick={
+                                            () => {
+                                                dispatch({ type: SET_CURRENT_CATEGORY, payload: cat }),
+                                                document.getElementById('root').scrollIntoView({behavior:'smooth'})
+                                            } }
+                                    >تعديل</button>
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox 
+                                                    defaultChecked ={ cat.cstate != 0 }
+                                                    name="Show"
+                                                onClick={ cat.cstate != 0 ?
+                                                    () => hideHandler(cat.catID) :
+                                                    () => showHandler(cat.catID)
+                                                }
+                                            />
+                                        } label="إظهار" />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+          </div>
+         
           
     </div>
   )

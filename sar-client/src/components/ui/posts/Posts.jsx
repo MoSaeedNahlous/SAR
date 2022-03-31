@@ -3,15 +3,15 @@ import Post from './post/Post'
 
 const Posts = ({data}) => {
   return (
-    <div>
-      <h1>Latest Posts</h1>
-      <button>Add Post</button>
+    <div className='container'>
+      <h1 className='mb-5 mt-3'>آخر الأخبار</h1>
+      <button className='btn btn-primary mb-3'> إضافة منشور</button>
     {
     data.map(post => (
-      <Post post={post}  key={post.id}/>
+      <Post post={post} key={post.id}/>
     ))
   }
-      </div>
+    </div>
   )
 }
 

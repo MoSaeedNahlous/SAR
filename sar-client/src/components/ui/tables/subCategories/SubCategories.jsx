@@ -54,45 +54,48 @@ const SubCategories = () => {
             {/* {success && <Alert onClose={() => {dispatch({type:DELETE_CATEGORY_RESET})}}>تم الحذف بنجاح</Alert> }
             { deleteError && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_CATEGORY_RESET }) } }>{ deleteError }</Alert> } */}
           <h3 className='text-center my-3'>الأصناف الفرعية</h3>
-          <table className='table table-striped mx-auto w-75 mt-5' dir='rtl'>
-              <thead className='bg-primary text-white'>
-                  <tr className='py-5'>
-                      <th>ID</th>
-                      <th>الاسم</th>
-                      <th>الصنف الرئيسي</th>
-             
-                      <th className='text-center'>خيارات</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  { subCategoriesList.sort((a,b)=>{return a.catID - b.catID}).map(subCat => (
-                      <tr key={subCat.subCatID}>
-                          <td>{ subCat.subCatID }</td>
-                          <td>{ subCat.subCatName }</td>
-                          <td>{ subCat.catName }</td>
-                          <td className='d-flex justify-content-center'>
-                             <button
-                                  className='btn btn-danger mx-2'
-                                  disabled={ deleteLoading }
-                                  onClick={()=>deleteHandler(subCat.subCatID)}
-                              >
-                                  {deleteLoading ?  <CircularProgress color="inherit"  size={15} /> :
-                                  'حذف'
-                             } </button>
-                              <button className='btn btn-primary'
-                                  onClick={
-                                      () => dispatch({ type: SET_CURRENT_SUBCATEGORY,payload:subCat }) }
-                              >تعديل</button>
-                              <FormControlLabel control={
-                  <Checkbox
-                      name="Show"
-                  />
-              } label="إظهار" />
-                          </td>
-                      </tr>
-                  ))}
-              </tbody>
-          </table>
+          <div className='table-responsive'>
+                <table className='table table-striped table-bordered mx-auto w-75 mt-5' dir='rtl'>
+                    <thead className='bg-primary text-white'>
+                        <tr className='py-5'>
+                            <th>ID</th>
+                            <th>الاسم</th>
+                            <th>الصنف الرئيسي</th>
+                    
+                            <th className='text-center'>خيارات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { subCategoriesList.sort((a,b)=>{return a.catID - b.catID}).map(subCat => (
+                            <tr key={subCat.subCatID}>
+                                <td>{ subCat.subCatID }</td>
+                                <td>{ subCat.subCatName }</td>
+                                <td>{ subCat.catName }</td>
+                                <td className='d-flex justify-content-center'>
+                                    <button
+                                        className='btn btn-danger mx-2'
+                                        disabled={ deleteLoading }
+                                        onClick={()=>deleteHandler(subCat.subCatID)}
+                                    >
+                                        {deleteLoading ?  <CircularProgress color="inherit"  size={15} /> :
+                                        'حذف'
+                                    } </button>
+                                    <button className='btn btn-primary'
+                                        onClick={
+                                            () => dispatch({ type: SET_CURRENT_SUBCATEGORY,payload:subCat }) }
+                                    >تعديل</button>
+                                    <FormControlLabel control={
+                        <Checkbox
+                            name="Show"
+                        />
+                    } label="إظهار" />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+          </div>
+          
           
     </div>
   )

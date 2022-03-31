@@ -5,7 +5,7 @@ import { posts }  from '../../ui/posts/dummy-posts'
 const Home = () => {
   return (
       <div>
-          Home
+          
           <Posts data={posts}/>
       </div>
       
