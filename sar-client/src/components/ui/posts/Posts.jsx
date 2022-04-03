@@ -1,14 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Post from './post/Post'
+import {Link} from 'react-router-dom'
+import { Alert, CircularProgress } from '@mui/material'
+import { Box } from '@mui/system'
+import { getPosts } from '../../../redux/actions/postsActions'
+import { GET_POSTS_RESET, SET_CURRENT_POST_RESET } from '../../../redux/constants/postsConstants'
 
-const Posts = ({data}) => {
+const Posts = () => {
+
+  const dispatch = useDispatch()
+
+  const addNewPostST = useSelector((state) => state.getPosts)
+  const { posts, loading, error } = addNewPostST
+
+
+  useEffect(() => {
+    dispatch({ type: GET_POSTS_RESET })
+    dispatch({ type: SET_CURRENT_POST_RESET })
+        dispatch(getPosts());
+    }, []);
+
+  
+    
+    if (error) {
+        return <Alert variant='error'>{ error }</Alert>
+  }
+  
+  if (loading) {
+    return <Box sx={{ display: 'flex',justifyContent:'center' }}>
+      <CircularProgress size={100} color='grey' />
+    </Box>
+    }
   return (
     <div className='container'>
       <h1 className='mb-5 mt-3'>آخر الأخبار</h1>
-      <button className='btn btn-primary mb-3'> إضافة منشور</button>
+      <Link to='/management/add-post' className='btn btn-primary mb-3'> إضافة منشور</Link>
     {
-    data.map(post => (
-      <Post post={post} key={post.id}/>
+    posts.sort((a,b)=> new Date(b.dateCreated) - new Date(a.dateCreated) ).map(post => (
+      <Post post={post} key={ post.postID }/>
     ))
   }
     </div>

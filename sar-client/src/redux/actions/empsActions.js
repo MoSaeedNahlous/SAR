@@ -49,30 +49,37 @@ export const getEmps = () => async (dispatch) => {
   }
 };
 
-export const addNewEmp = (empName,add1,add2,password,notes,mob1,mob2,email) => async (dispatch) => {
+export const addNewEmp = (
+  empName,
+  add1,
+  add2,
+  password,
+  notes,
+  mob1,
+  mob2,
+  email) => async (dispatch) => {
   try {
     dispatch({
       type: ADD_EMP_REQUEST,
     });
 
-    const body = {
-            "level": "insert",
+    const body ={
+       "level": "insert",
+            "empId": "1182",
             "empName": empName,
-            "empType": "e",
+            "empType": "3",
             "password": password,
-            "BlockReason": "",
-            "address2":add2,
+            "BlockReason": "8",
+            "address2": add2,
             "notes": notes,
-            "totalpaid": "0",
-            "totalRemain": "0",
-            "IsBlocked": "",
+            "totalpaid": "1",
+            "totalRemain": "1",
+            "IsBlocked": "22222222222222222222dddd222222222222222222222222222222222222222222222",
             "mobile1": mob1,
             "mobile2": mob2,
             "Email": email,
             "address1": add1,
-            "gender": "",
-            "state": "",
-            "images": "",
+            "gender": "1789", "state": "1789", "images" : "1789","CityID": "1"
             }
 
     const { data } = await axios.post(
@@ -103,35 +110,32 @@ export const deleteEmp = (empId) => async (dispatch) => {
       type: DELETE_EMP_REQUEST,
     });
 
-    const body = {
-            "level": "delete",
+    const body ={
+       "level": "delete",
             "empId": empId,
             "empName": "empName",
-            "empType": "e",
-            "password": "password",
-            "BlockReason": "",
-            "address2":"add2",
+            "empType": "3",
+            "password": 'password',
+            "BlockReason": "8",
+            "address2": "add2",
             "notes": "notes",
-            "totalpaid": "0",
-            "totalRemain": "0",
-            "IsBlocked": "-",
+            "totalpaid": "1",
+            "totalRemain": "1",
+            "IsBlocked": "22222222222222222222dddd222222222222222222222222222222222222222222222",
             "mobile1": "mob1",
             "mobile2": "mob2",
             "Email": "email",
             "address1": "add1",
-            "gender": "",
-            "state": "",
-            "images": "",
-            "CityID": "cityId"
+            "gender": "1789", "state": "1789", "images" : "1789","CityID": "1"
             }
 
     const { data } = await axios.post(
       `http://mhmodmj-001-site1.itempurl.com/api/Employee`,body
     );
 
-    // if(data.table[0].column1 === "cant delete it") {
-    //   throw new Error("لا يمكن حذف الصنف لوجود أصناف فرعية متعلقة فيه")
-    // }
+    if (data.table[0].column1 === "cant delete it") {
+      throw new Error("لا يمكن الحذف لأن المندوب مرتبط ببيانات أخرى")
+    }
 
     dispatch({
       type: DELETE_EMP_SUCCESS,
@@ -227,36 +231,46 @@ export const deleteEmp = (empId) => async (dispatch) => {
 //   }
 // };
 
-export const updateEmp = (empName,add1,add2,password,notes,mob1,mob2,email) => async (dispatch) => {
+export const updateEmp = (
+  empId,
+  empName,
+  add1,
+  add2,
+  password,
+  notes,
+  mob1,
+  mob2,
+  email) => async (dispatch) => {
   try {
     dispatch({
       type: UPDATE_EMP_REQUEST,
     });
+    
 
-    const body = {
+    const body ={
             "level": "update",
+            "empId": empId,
             "empName": empName,
-            "empType": "e",
+            "empType": "3",
             "password": password,
-            "BlockReason": "",
-            "address2":add2,
+            "BlockReason": "8",
+            "address2": add2,
             "notes": notes,
-            "totalpaid": "0",
-            "totalRemain": "0",
-            "IsBlocked": "-",
+            "totalpaid": "1",
+            "totalRemain": "1",
+            "IsBlocked": "22222222222222222222dddd222222222222222222222222222222222222222222222",
             "mobile1": mob1,
             "mobile2": mob2,
             "Email": email,
             "address1": add1,
-            "gender": "",
-            "state": "",
-            "images": "",
-            "CityID": ""
+            "gender": "1789", "state": "1789", "images" : "1789","CityID": "1"
             }
 
     const { data } = await axios.post(
       `http://mhmodmj-001-site1.itempurl.com/api/Employee`,body
     );
+
+    
 
     dispatch({
       type: UPDATE_EMP_SUCCESS,

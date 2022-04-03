@@ -82,15 +82,18 @@ const SubCategoryForm = () => {
         >
           {loading ?
             <CircularProgress />
-            : categoriesList.map((cat) => (
+            : error ?
+              <Alert variant='error'>{ error }</Alert>:
+            categoriesList.map((cat) => (
                   <MenuItem
                     key={cat.catID}
                     value={ cat.catID }>{ cat.catName }
                   </MenuItem>
-          ))}
+            )) }
         </Select>
 
         <TextField sx={ { width: '100%' } }
+          required
           label="اسم الصنف الفرعي"
           onChange={
           (e) => setName(e.target.value)
@@ -101,8 +104,21 @@ const SubCategoryForm = () => {
       </FormControl>
 
       <br />
-          <button type='button' className='btn btn-outline-primary mx-1' onClick={onClickHandler}>تعديل</button>
-          <button type='submit' className='btn btn-primary mx-1'>إضافة</button>
+      <button
+        type='button'
+        className='btn btn-outline-primary mx-1'
+        onClick={ onClickHandler }
+      disabled={ addingLoading || updateLoading || !current.subCatID }
+      >
+        { addingLoading ? <CircularProgress size={ 20 } color='grey' /> : "تعديل" }
+      </button>
+      <button
+        type='submit'
+        className='btn btn-primary mx-1'
+        disabled={ addingLoading || updateLoading } >
+        
+        { addingLoading ? <CircularProgress size={ 20 } color='grey' /> : "إضافة" }
+      </button>
          
     </form>
   )

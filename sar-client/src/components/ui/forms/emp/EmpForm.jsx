@@ -1,7 +1,8 @@
+import { Alert, CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewEmp } from '../../../../redux/actions/empsActions';
-import { SET_CURRENT_EMP_RESET } from '../../../../redux/constants/empConstants';
+import { addNewEmp, updateEmp } from '../../../../redux/actions/empsActions';
+import { ADD_EMP_RESET, SET_CURRENT_EMP_RESET, UPDATE_EMP_RESET } from '../../../../redux/constants/empConstants';
 
 const EmpForm = () => {
   const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const EmpForm = () => {
 
 
   const [data, setData] = useState({
+    empId:'',
     empName: '',
     mobile1: '',
     mobile2: '',
@@ -46,7 +48,7 @@ const EmpForm = () => {
       data.email))
     document.getElementById('addEmpForm').reset()
     dispatch({ type: SET_CURRENT_EMP_RESET })
-    setData({
+    setData({empId:'',
     empName: '',
     mobile1: '',
     mobile2: '',
@@ -59,18 +61,38 @@ const EmpForm = () => {
   })
   }
   
-  const onClickHandler = (id,name) => {
-    // dispatch(updateCategory(id,name))
-    // document.getElementById('addCatForm').reset()
-    // dispatch({ type: SET_CURRENT_CATEGORY_RESET })
+  const onClickHandler = () => {
+    dispatch(updateEmp(
+      current.empId,
+      data.empName, data.address1,
+      data.address2, data.password, data.notes,
+      data.mobile1, data.mobile2, data.email))
+    document.getElementById('addEmpForm').reset()
+    dispatch({ type: SET_CURRENT_EMP_RESET })
+    setData({empId:'',
+    empName: '',
+    mobile1: '',
+    mobile2: '',
+    address1: '',
+    address2:'',
+    cityId: '',
+    email: '',
+    password: '',
+    notes:''
+  })
     
   }
   
 
   
   return (
-    <div className='container'>
-      <form className='mx-auto w-50' dir='rtl' id='addEmpForm' onSubmit={submitHandler}>
+
+      <form className='mx-auto w-50' dir='rtl' id='addEmpForm' onSubmit={ submitHandler }>
+      { success && <Alert onClose={() => {dispatch({type:ADD_EMP_RESET})}}>تمت الإضافة بنجاح</Alert> }
+      { addingError && <Alert variant='error' onClose={ () => { dispatch({ type: ADD_EMP_RESET }) } }>{ addingError }</Alert> }
+      { updateSuccess && <Alert onClose={() => {dispatch({type:UPDATE_EMP_RESET})}}>تم التعديل بنجاح</Alert> }
+      { updateError && <Alert variant='error' onClose={ () => { dispatch({ type: UPDATE_EMP_RESET }) } }>{ updateError }</Alert>}
+      
         <div className=''>
         <div className='row'>
           <div className='col-lg-12'>
@@ -87,6 +109,7 @@ const EmpForm = () => {
                   id='exampleInputEmail1'
                   aria-describedby='text'
                   placeholder=''
+                  required
                 />
               </div>
           </div>
@@ -105,6 +128,7 @@ const EmpForm = () => {
                   className='form-control'
                   aria-describedby='text'
                   placeholder=''
+                  required
                 />
               </div>
           </div>
@@ -138,6 +162,7 @@ const EmpForm = () => {
                   className='form-control'
                   aria-describedby='text'
                   placeholder=''
+                  required
                 />
               </div>
           </div>
@@ -168,10 +193,11 @@ const EmpForm = () => {
                   value={ data.email }
                   onChange={onChangeHandler}
                   name='email'
-                  type='texta'
+                  type='email'
                   className='form-control'
                   aria-describedby='text'
                   placeholder=''
+                  required
                 />
               </div>
           </div>
@@ -182,7 +208,7 @@ const EmpForm = () => {
                 </label>
                 <input className='form-control'
                   value={ data.password }
-                  onChange={onChangeHandler}type='password' name='password' />
+                  onChange={onChangeHandler} type='text' name='password' required/>
               </div>
           </div>
         </div>
@@ -194,18 +220,20 @@ const EmpForm = () => {
                   onChange={onChangeHandler}></textarea>
         </div>     
           <div>
-            <button type='submit' className='btn btn-primary mt-3 px-5 me-2' style={{width: '200px'}}>
-              إنشاء حساب
+            <button type='submit' className='btn btn-primary mt-3 px-5 me-2' style={{width: '200px'}} disabled={ addingLoading || updateLoading   } >
+        
+        { addingLoading ? <CircularProgress size={ 20 } color='grey' /> : "إضافة" }
             </button>
 
-            <button type='submit' className='btn btn-outline-primary mt-3 me-2 px-5' style={{width: '200px'}}>
-              تعديل
+            <button type='button' onClick={onClickHandler} className='btn btn-outline-primary mt-3 me-2 px-5' style={{width: '200px'}} disabled={ addingLoading || updateLoading ||!current.empId }
+      >
+        { addingLoading ? <CircularProgress size={ 20 } color='grey' /> : "تعديل" }
             </button>
           </div>
          
         </div>
       </form>
-    </div>
+    
   );
 };
 

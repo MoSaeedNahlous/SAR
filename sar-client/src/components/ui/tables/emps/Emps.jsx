@@ -1,8 +1,8 @@
 import { Alert, CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEmps} from '../../../../redux/actions/empsActions'
+import { deleteEmp, getEmps} from '../../../../redux/actions/empsActions'
 import { ADD_EMP_RESET, DELETE_EMP_RESET, SET_CURRENT_EMP, SET_CURRENT_EMP_RESET, UPDATE_EMP_RESET } from '../../../../redux/constants/empConstants';
 
 const Emps = () => {
@@ -21,14 +21,38 @@ const Emps = () => {
     const { success:addSuccess, error: addError, loading: addLoading } = addEmpSt;
     
     const updateEmpSt = useSelector((state) => state.updateEmp);
-    const {success:updateSuccess, error:updateError, loading:updateLoading } = updateEmpSt;
+    const { success: updateSuccess, error: updateError, loading: updateLoading } = updateEmpSt;
+  
+  // Pagination code
+  // const [empsState, setEmpsState] = useState()
+  // const [currentEmps, setCurrentEmps] = useState([])
+  // const [currentPage, setCurrentPage] = useState(1)
+  // const [empsPerPage, setEmpsPerPage] = useState(10)
 
-    useEffect(() => {
-        dispatch({ type: SET_CURRENT_EMP_RESET })
-        dispatch({ type: UPDATE_EMP_RESET })
-        dispatch({ type: ADD_EMP_RESET })
-        dispatch(getEmps());
-    }, []);
+  // const pageNumbers = []
+  
+
+  // useEffect(() => {
+  //   if (!loading) {
+  //   const indexOfLastEmp = currentPage * empsPerPage
+  //   const indexOfFirstEmp = indexOfLastEmp - empsPerPage
+  //   setCurrentEmps(empsList.slice(indexOfFirstEmp, indexOfLastEmp))
+  //   for (let i = 1; i <= Math.ceil(empsList / empsPerPage); i++) {
+  //       pageNumbers.push(i);
+  //   }
+  // }
+  // }, [loading])
+  
+  
+  
+
+  useEffect(() => {
+    dispatch({ type: SET_CURRENT_EMP_RESET })
+    dispatch({ type: UPDATE_EMP_RESET })
+    dispatch({ type: ADD_EMP_RESET })
+    dispatch(getEmps());
+  }, []);
+  
 
     useEffect(() => {
         if (success || updateSuccess ||addSuccess) {
@@ -42,13 +66,6 @@ const Emps = () => {
         
     }
 
-    const showHandler = (id) => {
-        dispatch(showEmp(id))
-    }
-
-    const hideHandler = (id) => {
-        dispatch(hideEmp(id))
-    }
 
     
 
@@ -57,9 +74,12 @@ const Emps = () => {
       <CircularProgress size={100} color='grey' />
     </Box>
   }
+  if (error) {
+        return <Alert variant='error'>{ error }</Alert>
+    }
   return (
     <div>
-       { error && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_EMP_RESET }) } }>{ error }</Alert> }
+          { error && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_EMP_RESET }) } }>{ error }</Alert> }
           { success && <Alert onClose={() => {dispatch({type:DELETE_EMP_RESET})}}>تم الحذف بنجاح</Alert> }
           { deleteError && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_EMP_RESET }) } }>{ deleteError }</Alert> }
           
@@ -77,7 +97,20 @@ const Emps = () => {
       </div>
 
       <div className='container-fluid px-5'>
-      <div className='table-responsive'>
+        {/* <nav style={{border:'solid 1px black'}}>
+            <ul className='pagination'>
+                {pageNumbers.map((number) => (   
+                    <li key={ number } className='page-item'>
+                        <a href='!#' className='page-link'>
+                            {number}
+                        </a>
+                    </li> 
+                ))}
+            </ul>
+        </nav> */}
+        
+        <div className='table-responsive'>
+          
           <table className='table table-bordered table-striped mx-auto' dir='rtl'>
             <thead>
               <tr className='bg-primary text-white'>
@@ -110,7 +143,14 @@ const Emps = () => {
                                             document.getElementById('root').scrollIntoView({behavior:'smooth'})
                                           } }
                                   >تعديل</button>
-                  <button style={{width: '75px'}} className='btn btn-danger mx-2'>حذف</button>
+                      <button style={ { width: '75px' } }
+                        className='btn btn-danger mx-2'
+                        onClick={ () => deleteHandler(String(emp.empId)) }
+                        disabled={ deleteLoading }
+                              >
+                        { deleteLoading ? <CircularProgress color="inherit" size={ 15 } /> :
+                          'حذف' }
+                      </button>
                   
               </td>
           

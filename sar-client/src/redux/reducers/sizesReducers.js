@@ -9,6 +9,7 @@ import {
     DELETE_SIZE_SUCCESS,
     GET_SIZES_FAIL,
     GET_SIZES_REQUEST,
+    GET_SIZES_RESET,
     GET_SIZES_SUCCESS,
     HIDE_SIZE_REQUEST,
     HIDE_SIZE_SUCCESS,
@@ -42,25 +43,37 @@ export const getSizesReducer = (state = { sizes: [] }, action) => {
             }
         
         case GET_SIZES_FAIL:
-             return { loading: false, error: action.payload }
+            return {
+                loading: false,
+                error: action.payload
+            }
+        
+        case GET_SIZES_RESET:
+            return {
+                loading: false, sizes: []
+            }
          
         case HIDE_SIZE_REQUEST:
              return {
                  ...state,
                  loading: true
-             }
+            }
+        case ADD_SIZE_RESET:
+            return {
+                sizes:[]
+            }
          
         case HIDE_SIZE_SUCCESS:
              return {
                 loading:false,
-                // sizes: state.sizes.map(
-                //     (cat) => {
-                //         if (cat.catID == action.payload) {
-                //             cat.cstate = 0
-                //         } 
-                //         return cat
-                //     }
-                // )
+                sizes: state.sizes.map(
+                    (size) => {
+                        if (size.sizeID == action.payload.sizeID) {
+                            size.state = "deleted"
+                        } 
+                        return size
+                    }
+                )
             }
         case SHOW_SIZE_REQUEST:
              return {
@@ -71,14 +84,14 @@ export const getSizesReducer = (state = { sizes: [] }, action) => {
         case SHOW_SIZE_SUCCESS:
              return {
                 loading:false,
-                // sizes: state.sizes.map(
-                //     (cat) => {
-                //         if (cat.catID == action.payload) {
-                //             cat.cstate = 1
-                //         } 
-                //         return cat
-                //     }
-                // )
+                sizes: state.sizes.map(
+                    (size) => {
+                        if (size.sizeID == action.payload.sizeID) {
+                            size.state = 1
+                        } 
+                        return size
+                    }
+                )
             }
         default:
             return state
@@ -100,7 +113,7 @@ export const addSizeReducer = (state = {}, action) => {
                  loading: false,
                  error: action.payload
              }
-         case ADD_SIZE_RESET:
+         case 'ADD_SIZE_RESET1':
              return {
                  
              }
@@ -155,7 +168,7 @@ export const updateSizeReducer = (state = {}, action) => {
      }
 }
 
-export const setCurrentSizeReducer = (state = { currentSize: {} }, action) => {
+export const setCurrentSizeReducer = (state = { currentSize: '' }, action) => {
      switch (action.type) {
         case SET_CURRENT_SIZE:
             return {
@@ -163,7 +176,7 @@ export const setCurrentSizeReducer = (state = { currentSize: {} }, action) => {
             }
         case SET_CURRENT_SIZE_RESET:
              return {
-                 currentSize: {}
+                 currentSize: ''
              }
         default:
             return state

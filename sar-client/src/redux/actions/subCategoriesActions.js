@@ -30,7 +30,7 @@ export const getSubCategories = (catId) => async (dispatch) => {
     });
 
     const { data } = catId ? await axios.get(
-      `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=selectM&CatID=${catId}`
+      `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=selectbycatM&CatID=${catId}`
     ) : await axios.get(
       `http://mhmodmj-001-site1.itempurl.com/api/subCategories?level=selectM&CatID=${1}`
     )

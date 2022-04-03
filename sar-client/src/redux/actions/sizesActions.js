@@ -1,7 +1,11 @@
-import { ADD_SIZE_FAIL, ADD_SIZE_REQUEST, ADD_SIZE_SUCCESS, DELETE_SIZE_FAIL, DELETE_SIZE_REQUEST, DELETE_SIZE_SUCCESS, GET_SIZES_FAIL, GET_SIZES_REQUEST, GET_SIZES_SUCCESS, HIDE_SIZE_REQUEST, HIDE_SIZE_SUCCESS, SET_CURRENT_SIZE, SHOW_SIZE_REQUEST, SHOW_SIZE_SUCCESS, UPDATE_SIZE_FAIL, UPDATE_SIZE_REQUEST, UPDATE_SIZE_SUCCESS } from "../constants/targetsConstants";
+import {
+  ADD_SIZE_FAIL, ADD_SIZE_REQUEST,
+  ADD_SIZE_SUCCESS, DELETE_SIZE_FAIL, DELETE_SIZE_REQUEST, DELETE_SIZE_SUCCESS, GET_SIZES_FAIL, GET_SIZES_REQUEST, GET_SIZES_SUCCESS, HIDE_SIZE_REQUEST, HIDE_SIZE_SUCCESS, SET_CURRENT_SIZE, SHOW_SIZE_REQUEST, SHOW_SIZE_SUCCESS, UPDATE_SIZE_FAIL, UPDATE_SIZE_REQUEST, UPDATE_SIZE_SUCCESS
+} from "../constants/sizesConstants";
+import axios from 'axios'
 
 
-export const getSizes = () => async (dispatch) => {
+export const getSizes = (subCatId) => async (dispatch) => {
   try {
     
     // loading
@@ -9,9 +13,9 @@ export const getSizes = () => async (dispatch) => {
       type: GET_SIZES_REQUEST,
     });
 
-    // const { data } = await axios.get(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories?level=selectM&CatID=1`
-    // );
+    const { data } = await axios.get(
+      `http://mhmodmj-001-site1.itempurl.com/api/size?level=selectBySubcatM&SubCatID=${subCatId}`
+    );
 
     dispatch({
       type: GET_SIZES_SUCCESS,
@@ -29,24 +33,26 @@ export const getSizes = () => async (dispatch) => {
   }
 };
 
-export const addNewSize = (name) => async (dispatch) => {
+export const addNewSize = (name,catId,subCatId) => async (dispatch) => {
   try {
     dispatch({
       type: ADD_SIZE_REQUEST,
     });
 
-    const body = { 
-          "level":"insert",
-          "CatID":"5",
-          "CatName":name,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+        "level": "insert",
+        "SizeID":"434",
+        "SizeName":name,
+        "CatID":catId,
+        "SubCatID":subCatId,
+      "notes": "1",
+        "state":""
+           
       }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/size`,body
+    );
 
     dispatch({
       type: ADD_SIZE_SUCCESS,
@@ -71,17 +77,20 @@ export const deleteSize = (id) => async (dispatch) => {
       type: DELETE_SIZE_REQUEST,
     });
 
-    const body = { 
-          "level":"delete",
-          "CatID":id,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+        "level": "delete",
+        "SizeID":id,
+        "SizeName":"",
+        "CatID":"",
+        "SubCatID":"",
+      "notes": "1",
+        "state":""
+           
       }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/size`,body
+    );
 
     dispatch({
       type: DELETE_SIZE_SUCCESS,
@@ -104,17 +113,19 @@ export const hideSize = (id) => async (dispatch) => {
   try {
     dispatch({type:HIDE_SIZE_REQUEST,payload:id})
 
-    const body = { 
-          "level":"hide",
-          "CatID":id,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+        "level": "hide",
+        "SizeID":id,
+        "SizeName":"3",
+        "CatID":"1",
+        "SubCatID":"2",
+        "notes":"1"
+           
       }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/size`,body
+    );
 
     dispatch({type:HIDE_SIZE_SUCCESS,payload:id})
 
@@ -124,21 +135,24 @@ export const hideSize = (id) => async (dispatch) => {
     console.error(error);
   }
 };
+
 export const showSize = (id) => async (dispatch) => {
   try {
     dispatch({type:SHOW_SIZE_REQUEST,payload:id})
 
-    const body = { 
-          "level":"show",
-          "CatID":id,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+        "level": "show",
+        "SizeID":id,
+        "SizeName":"3",
+        "CatID":"1",
+        "SubCatID":"2",
+        "notes":"1"
+           
       }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/size`,body
+    );
     dispatch({type:SHOW_SIZE_SUCCESS,payload:id})
 
 
@@ -148,24 +162,26 @@ export const showSize = (id) => async (dispatch) => {
   }
 };
 
-export const updateSize = (id,name) => async (dispatch) => {
+export const updateSize = (id,name,state,catId,subCatId) => async (dispatch) => {
   try {
     dispatch({
       type: UPDATE_SIZE_REQUEST,
     });
 
-    const body = { 
-          "level":"update",
-      "CatID": id,
-          "CatName":name,
-         "notes":"1",
-         "state":"1",
-          "images":"1"
+    const body = {
+        "level": "update",
+        "SizeID":id,
+        "SizeName":name,
+        "CatID":catId,
+        "SubCatID":subCatId,
+      "notes": "1",
+        "state":state
+           
       }
 
-    // const { data } = await axios.post(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/categories`,body
-    // );
+    const { data } = await axios.post(
+      `http://mhmodmj-001-site1.itempurl.com/api/size`,body
+    );
 
     dispatch({
       type: UPDATE_SIZE_SUCCESS,

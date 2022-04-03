@@ -3,6 +3,7 @@ import {
   GET_POSTS_REQUEST,
   GET_POSTS_RESET,
   GET_POSTS_SUCCESS,
+  SET_CURRENT_POST,
 } from '../constants/postsConstants';
 import axios from 'axios';
 
@@ -12,9 +13,9 @@ export const getPosts = () => async (dispatch) => {
       type: GET_POSTS_REQUEST,
     });
 
-    // const { data } = await axios.get(
-    //   `http://mhmodmj-001-site1.itempurl.com/api/Catgories`
-    // );
+    const { data } = await axios.get(
+      `http://mhmodmj-001-site1.itempurl.com/posts`
+    );
 
     dispatch({
       type: GET_POSTS_SUCCESS,
@@ -29,4 +30,11 @@ export const getPosts = () => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const setCurrentPost = (post) => async (dispatch) => {
+    dispatch({
+      type: SET_CURRENT_POST,
+      payload: post,
+    });
 };

@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { addCategoryReducer, deleteCategoryReducer, getCategoriesReducer,setCurrentCategoryReducer, updateCategoryReducer } from './reducers/categoriesReducers';
 import { addSubCategoryReducer, deleteSubCategoryReducer, getSubCategoriesReducer, setCurrentSubCategoryReducer, updateSubCategoryReducer,  } from './reducers/subCategoriesReducers';
 import { loginReducer } from './reducers/authReducers';
-import { getPostsReducer} from './reducers/postsReudcers';
+import { addNewPostReducer, getPostsReducer, setCurrentPostReducer, updatePostReducer} from './reducers/postsReudcers';
 import { getCitiesReducer } from './reducers/citiesReducers';
 import { getDeliveryCompaniesReducer } from './reducers/deliveryCompaniesReducers';
 import {
@@ -32,7 +32,10 @@ const initialState = {};
 const reducer = combineReducers({
   getCategories: getCategoriesReducer,
   getSubCategories: getSubCategoriesReducer,
-  getPosts :getPostsReducer,
+  getPosts: getPostsReducer,
+  addPost: addNewPostReducer,
+  setCurrentPost: setCurrentPostReducer,
+  updatePost:updatePostReducer,
   login: loginReducer,
   getCities: getCitiesReducer,
   getDeliveryCompanies: getDeliveryCompaniesReducer,

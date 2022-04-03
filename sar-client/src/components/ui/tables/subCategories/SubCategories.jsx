@@ -57,7 +57,10 @@ const SubCategories = () => {
             <CircularProgress size={100} color='grey' />
           </Box>
       )
-  }
+    }
+    if(error)
+    return <Alert variant='error'>{ error }</Alert>
+         
   return (
       <div>
             {success && <Alert onClose={() => {dispatch({type:DELETE_SUBCATEGORY_RESET})}}>تم الحذف بنجاح</Alert> }

@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteCategory, getCategories, hideCategory, showCategory } from '../../../../redux/actions/categoriesActions'
-import { ADD_CATEGORY_RESET, DELETE_CATEGORY_RESET, SET_CURRENT_CATEGORY, SET_CURRENT_CATEGORY_RESET, UPDATE_CATEGORY_RESET} from '../../../../redux/constants/categoriesConstants'
+import { ADD_CATEGORY_RESET, DELETE_CATEGORY_RESET, GET_CATEGORIES_RESET, SET_CURRENT_CATEGORY, SET_CURRENT_CATEGORY_RESET, UPDATE_CATEGORY_RESET} from '../../../../redux/constants/categoriesConstants'
 
 const Categories = () => {
 
@@ -57,13 +57,17 @@ const Categories = () => {
     return <Box sx={{ display: 'flex',justifyContent:'center' }}>
       <CircularProgress size={100} color='grey' />
     </Box>
-  }
+    }
+    
+    if (error) {
+        return <Alert variant='error'>{ error }</Alert>
+    }
 
 
   return (
       <div>
           
-          { error && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_CATEGORY_RESET }) } }>{ error }</Alert> }
+          { error && <Alert variant='error'>{ error }</Alert> }
           { success && <Alert onClose={() => {dispatch({type:DELETE_CATEGORY_RESET})}}>تم الحذف بنجاح</Alert> }
           { deleteError && <Alert variant='error' onClose={ () => { dispatch({ type: DELETE_CATEGORY_RESET }) } }>{ deleteError }</Alert> }
           
@@ -85,8 +89,9 @@ const Categories = () => {
                           <td className='d-flex justify-content-center'>
                               <button
                                   className='btn btn-danger mx-2'
+                                  
+                                  onClick={ () => deleteHandler(cat.catID) }
                                   disabled={ deleteLoading }
-                                  onClick={()=>deleteHandler(cat.catID)}
                               >
                                   {deleteLoading ?  <CircularProgress color="inherit"  size={15} /> :
                                   'حذف'

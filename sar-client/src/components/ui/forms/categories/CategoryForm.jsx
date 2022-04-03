@@ -59,14 +59,17 @@ const CategoryForm = () => {
         value={ name }
         required
       />
-      <button className='btn btn-primary mx-2' type='submit' disabled={ addingLoading || updateLoading } >
+      <button className='btn btn-primary mx-2'
+        type='submit'
+        disabled={ addingLoading || updateLoading } >
         
         { addingLoading ? <CircularProgress size={ 20 } color='grey' /> : "إضافة" }
       </button>
       <button
         className='btn btn-outline-primary'
-        disabled={ addingLoading || updateLoading }
-        onClick={()=>onClickHandler(current.catID,name)}
+        
+        onClick={ () => onClickHandler(current.catID, name) }
+        disabled={ addingLoading || updateLoading || !current.catID }
       >
         { addingLoading ? <CircularProgress size={ 20 } color='grey' /> : "تعديل" }
         </button>
