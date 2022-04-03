@@ -17,106 +17,109 @@ const Customer = () => {
       </div>
 
       <div className='container-fluid px-5'>
-      <table className='table table-striped mx-auto' dir='rtl'>
-        <thead>
-          <tr className='bg-primary text-white'>
-            <th scope='col'>ID</th>
-            <th scope='col'>اسم الزبون</th>
-            <th scope='col'>العنوان </th>
-            <th scope='col'>اسم الحي</th>
-            <th scope='col'>رقم الجوال 1</th>
-            <th scope='col'>رقم الجوال 2</th>
-            <th scope='col'> الموقع</th>
-            <th scope='col'>ملاحظات</th>
-            <th scope='col'>المدينة</th>
-            <th scope='col'>اسم المندوب</th>
-            <th scope='col'>خيارات</th>
-          </tr>
-        </thead>
-        <tbody  style={{fontSize: '0.9rem'}}>
-        <tr>
-          <td>1</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-       
-        </tr>
-        <tr>
-        <td>1</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+      <div className='table-responsive'>
+          <table className='table table-bordered table-striped mx-auto' dir='rtl'>
+            <thead>
+              <tr className='bg-primary text-white'>
+                <th scope='col'>ID</th>
+                <th scope='col'>اسم الزبون</th>
+                <th scope='col'>العنوان </th>
+                <th scope='col'>اسم الحي</th>
+                <th scope='col'>رقم الجوال 1</th>
+                <th scope='col'>رقم الجوال 2</th>
+                <th scope='col'> الموقع</th>
+                <th scope='col'>ملاحظات</th>
+                <th scope='col'>المدينة</th>
+                <th scope='col'>اسم المندوب</th>
+                <th scope='col'>خيارات</th>
+              </tr>
+            </thead>
+            <tbody  style={{fontSize: '0.9rem'}}>
+            <tr>
+              <td>1</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+          
+            </tr>
+            <tr>
+            <td>1</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
 
-        </tr>
-        <tr>
-        <td>1</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-       
-        </tr>
-        <tr>
-        <td>1</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>
-              Tw
-          </td>
-       
-        </tr>
-        <tr>
-        <td>1</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+            </tr>
+            <tr>
+            <td>1</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+          
+            </tr>
+            <tr>
+            <td>1</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>
+                  Tw
+              </td>
+          
+            </tr>
+            <tr>
+            <td>1</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
 
-          <td>
-            <div className='d-flex justify-content-around'>
-              <button className='btn btn-primary mx-1 btn-sm'>تعديل للتحديد</button>
-              <button className='btn btn-danger mx-1 btn-sm'>حذف</button>
-              <button className='btn btn-warning mx-1 btn-sm'>إلغاء الحظر</button>
-            </div>
-             
-              
-          </td>
-       
-        </tr>
-        </tbody>
-      </table>
+              <td>
+                <div className='d-flex justify-content-around'>
+                  <button className='btn btn-primary mx-1 btn-sm'>تعديل للتحديد</button>
+                  <button className='btn btn-danger mx-1 btn-sm'>حذف</button>
+                  <button className='btn btn-warning mx-1 btn-sm'>إلغاء الحظر</button>
+                </div>
+                
+                  
+              </td>
+          
+            </tr>
+            </tbody>
+          </table>
+      </div>
+     
       </div>
       
     </div>
