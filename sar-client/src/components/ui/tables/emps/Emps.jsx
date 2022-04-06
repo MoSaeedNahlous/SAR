@@ -23,27 +23,8 @@ const Emps = () => {
     const updateEmpSt = useSelector((state) => state.updateEmp);
     const { success: updateSuccess, error: updateError, loading: updateLoading } = updateEmpSt;
   
-  // Pagination code
-  // const [empsState, setEmpsState] = useState()
-  // const [currentEmps, setCurrentEmps] = useState([])
-  // const [currentPage, setCurrentPage] = useState(1)
-  // const [empsPerPage, setEmpsPerPage] = useState(10)
 
-  // const pageNumbers = []
-  
-
-  // useEffect(() => {
-  //   if (!loading) {
-  //   const indexOfLastEmp = currentPage * empsPerPage
-  //   const indexOfFirstEmp = indexOfLastEmp - empsPerPage
-  //   setCurrentEmps(empsList.slice(indexOfFirstEmp, indexOfLastEmp))
-  //   for (let i = 1; i <= Math.ceil(empsList / empsPerPage); i++) {
-  //       pageNumbers.push(i);
-  //   }
-  // }
-  // }, [loading])
-  
-  
+  const [search, setSearch] = useState('')
   
 
   useEffect(() => {
@@ -64,16 +45,20 @@ const Emps = () => {
     const deleteHandler = (id) => {
         dispatch(deleteEmp(id))
         
+  }
+  useEffect(() => {
+    if (search === '') {
+      dispatch(getEmps())
+    } else {
+      dispatch(getEmps(search))
     }
+  }, [search])
+  
 
 
     
 
-    if (loading) {
-    return <Box sx={{ display: 'flex',justifyContent:'center' }}>
-      <CircularProgress size={100} color='grey' />
-    </Box>
-  }
+    
   if (error) {
         return <Alert variant='error'>{ error }</Alert>
     }
@@ -93,6 +78,10 @@ const Emps = () => {
           className='form-control'
           name='search-for-employee'
           placeholder='اكتب اسم أو جزء من اسم المندوب'
+          onChange={ (e) => {
+            setSearch(e.target.value)
+          } }
+          value={search}
         />
       </div>
 
@@ -108,7 +97,11 @@ const Emps = () => {
                 ))}
             </ul>
         </nav> */}
-        
+        { loading?
+    <Box sx={{ display: 'flex',justifyContent:'center' }}>
+      <CircularProgress size={100} color='grey' />
+    </Box>:
+  
         <div className='table-responsive'>
           
           <table className='table table-bordered table-striped mx-auto' dir='rtl'>
@@ -160,7 +153,7 @@ const Emps = () => {
             
             </tbody>
           </table>
-      </div>
+      </div>}
       </div>
       
     </div>

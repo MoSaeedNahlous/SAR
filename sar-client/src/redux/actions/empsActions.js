@@ -21,7 +21,7 @@ import {
 } from '../constants/empConstants';
 import axios from 'axios';
 
-export const getEmps = () => async (dispatch) => {
+export const getEmps = (name) => async (dispatch) => {
   try {
     
     // loading
@@ -30,6 +30,8 @@ export const getEmps = () => async (dispatch) => {
     });
 
     const { data } = await axios.get(
+      name ?
+      `http://mhmodmj-001-site1.itempurl.com/api/Employee?level=selectByName&empname=${name}`:
       `http://mhmodmj-001-site1.itempurl.com/api/Employee`
     );
 

@@ -32,19 +32,26 @@ const PostFrom = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault()
     const data = new FormData();
-    data.append('feils', file);
+    if (file) {
+      data.append('feils', file);
+    }
     data.append('text', text)
     data.append('level', "insert")
     data.append('PostID', '1')
     data.append('title', 'no-title')
     data.append('notes', 'note')
     data.append('state', 'new')
-    data.append('images', '')
+    data.append('images', '/')
 
     dispatch({type:ADD_POST_REQUEST})
     
     try {
-      await axios.post('http://mhmodmj-001-site1.itempurl.com/posts', data);
+    
+      await axios.post(
+        file ?
+        'http://mhmodmj-001-site1.itempurl.com/postswimage':
+        'http://mhmodmj-001-site1.itempurl.com/posts',
+        data);
       dispatch({type:ADD_POST_SUCCESS})
       setFile(null)
       setText('')
@@ -56,7 +63,6 @@ const PostFrom = () => {
       })
       console.log(error);
     }
-    
   }
 
   const onClickHandler = async () => {
@@ -64,18 +70,20 @@ const PostFrom = () => {
     data.append('text', text)
     data.append('level', "update")
     data.append('PostID', currentPost.postID)
-    data.append('title',  '')
-    data.append('notes', '')
-    data.append('state', '')
+    data.append('title',  'title')
+    data.append('notes', 'notes')
+    data.append('state', 'state')
+    data.append('images', '/')
     if (file) {
       data.append('feils', file);
-      data.append('images', '')
-    } else {
-      data.append('images', currentPost.images)
-    }
+    } 
     dispatch({type:EDIT_POST_REQUEST})
     try {
-      await axios.post('http://mhmodmj-001-site1.itempurl.com/posts', data);
+      await axios.post(
+        file ?
+        'http://mhmodmj-001-site1.itempurl.com/postswimage':
+          'http://mhmodmj-001-site1.itempurl.com/posts',
+        data);
       dispatch({type:EDIT_POST_SUCCESS})
       setFile(null)
       setText('')

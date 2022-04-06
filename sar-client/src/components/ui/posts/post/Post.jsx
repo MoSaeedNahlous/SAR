@@ -1,8 +1,10 @@
 import React from 'react'
 import { format } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCurrentPost } from '../../../../redux/actions/postsActions'
+import { getPosts, setCurrentPost } from '../../../../redux/actions/postsActions'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { DELETE_POST_FAIL, DELETE_POST_REQUEST, DELETE_POST_SUCCESS } from '../../../../redux/constants/postsConstants'
 
 const Post = ({ post }) => {
 
@@ -10,8 +12,29 @@ const Post = ({ post }) => {
   
   const dispatch = useDispatch()
     
-    // const currentPostST = useSelector(state => state.setCurrentPost)
-    // const { currentPost } = currentPostST
+  const deleteHandler = async (id) => {
+    const data = new FormData();
+    data.append('text', 'text')
+    data.append('level', "delete")
+    data.append('PostID', id)
+    data.append('title',  'title')
+    data.append('notes', 'notes')
+    data.append('state', 'state')
+    data.append('images', '/')
+ 
+    dispatch({type:DELETE_POST_REQUEST})
+    try {
+      await axios.post('http://mhmodmj-001-site1.itempurl.com/posts',data);
+      dispatch({ type: DELETE_POST_SUCCESS })
+      dispatch(getPosts())
+    } catch (error) {
+      dispatch({
+        type: DELETE_POST_FAIL, 
+        payload: error
+      })
+      console.log(error);
+    }
+  }
   
   return (
       <div className="card mb-3" style={{maxWidth: '700px'}}>
@@ -32,11 +55,15 @@ const Post = ({ post }) => {
                 }
               }
             >تعديل</button>
-          <button className='btn btn-danger btn-sm'>حذف</button>
+            <button className='btn btn-danger btn-sm' onClick={
+              () => {
+                deleteHandler(post.postID)
+              }
+            }>حذف</button>
         </div>
       </div>
 
-      {post.images && 
+      {post.images!='/' && 
         <div className="col-md-4">
           <img src={"http://mhmodmj-001-site1.itempurl.com"+post.images} className="img-fluid rounded-start w-100 h-100" alt="صورة" />
         </div>

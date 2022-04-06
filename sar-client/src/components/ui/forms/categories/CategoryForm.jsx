@@ -55,10 +55,11 @@ const CategoryForm = () => {
         onChange={
           (e) => setName(e.target.value)
         }
-        variant='standard'
         value={ name }
         required
+        variant='standard'
       />
+      
       <button className='btn btn-primary mx-2'
         type='submit'
         disabled={ addingLoading || updateLoading } >
