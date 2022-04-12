@@ -15,6 +15,8 @@ import AddPost from './components/pages/management/addPost/AddPost';
 import AddCustomer from './components/pages/management/addCustomer/AddCustomer';
 import AddEmp from './components/pages/management/addEmp/AddEmp';
 import OrderPage from './components/pages/orders/OrderPage';
+import CreateBillPage from './components/pages/createBill/CreateBillPage';
+import BillDetails from './components/ui/complexComponents/BIllDetails';
 
 function App() {
   return (
@@ -42,26 +44,19 @@ function App() {
             path='/management/add-delivery-company'
             element={<AddDeliveryCompany />}
           />
-          <Route
-            path='/management/add-post'
-            element={<AddPost />}
-          />
-           <Route
-            path='/management/add-employee'
-            element={<AddEmp />}
-          />
-           <Route
-            path='/management/add-customer'
-            element={ <AddCustomer /> }
-          />
-         
+          <Route path='/management/add-post' element={<AddPost />} />
+          <Route path='/management/add-employee' element={<AddEmp />} />
+          <Route path='/management/add-customer' element={<AddCustomer />} />
+
           {/* Products Routes */}
           <Route path='/products/add-product' element={<AddProduct />} />
+
           {/* Orders Route  */}
-          <Route
-            path='/orders'
-            element={ <OrderPage /> }
-           />
+          <Route path='/orders' element={<OrderPage />} />
+
+          {/* Create Bill Route */}
+          <Route path='/create-bill' element={<CreateBillPage />} />
+          <Route path='/test' element={<BillDetails />} />
         </Routes>
       </Router>
     </div>

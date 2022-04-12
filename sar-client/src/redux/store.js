@@ -22,7 +22,13 @@ import {
   setCurrentPostReducer,
   updatePostReducer,
 } from './reducers/postsReudcers';
-import { getDeliveryCompaniesReducer } from './reducers/deliveryCompaniesReducers';
+import { 
+  addDeliveryCompanyReducer,
+  deleteDeliveryCompanyReducer,
+  getDeliveryCompaniesReducer,
+  setCurrentDeliveryCompanyReducer,
+  updateDeliveryCompanyReducer
+ } from './reducers/deliveryCompaniesReducers';
 
 import {
   addSizeReducer,
@@ -55,6 +61,16 @@ import {
   setCurrentTargetReducer,
   updateTargetReducer,
 } from './reducers/targetReducers';
+
+import {
+  addCustomerReducer,
+  deleteCustomerReducer,
+  getCustomersReducer,
+  setCurrentCustomerReducer,
+  updateCustomerReducer,
+  blockReducer,
+  unBlockReducer
+ } from './reducers/customersReducers'
 const initialState = {};
 
 const reducer = combineReducers({
@@ -70,7 +86,6 @@ const reducer = combineReducers({
   deleteCity: deleteCityReducer,
   setCurrentCity: setCurrentCityReducer,
   updateCity: updateCityReducer,
-  getDeliveryCompanies: getDeliveryCompaniesReducer,
   addCategory: addCategoryReducer,
   deleteCategory: deleteCategoryReducer,
   updateCategory: updateCategoryReducer,
@@ -94,6 +109,18 @@ const reducer = combineReducers({
   getEmps: getEmpsReducer,
   setCurrentEmp: setCurrentEmpReducer,
   updateEmp: updateEmpReducer,
+  getDeliveryCompanies: getDeliveryCompaniesReducer,
+  addDeliveryCompany: addDeliveryCompanyReducer,
+  deleteDeliveryCompany: deleteDeliveryCompanyReducer,
+  updateDeliveryCompany: updateDeliveryCompanyReducer,
+  setCurrentDeliveryCompany: setCurrentDeliveryCompanyReducer,
+  addCustomer:addCustomerReducer,
+  deleteCustomer:deleteCustomerReducer,
+  getCustomers:getCustomersReducer,
+  setCurrentCustomer:setCurrentCustomerReducer,
+  updateCustomer: updateCustomerReducer,
+  blockCustomer:blockReducer,
+  unBlockCustomer:unBlockReducer
 });
 
 const middleware = [thunk];

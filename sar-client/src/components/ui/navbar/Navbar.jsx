@@ -37,7 +37,7 @@ const Navbar = () => {
           <a className="nav-link" aria-current="page" href="#"> تعديل المنتجات </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="#">  إنشاء فاتورة</a>
+          <Link className="nav-link" aria-current="page" to='/create-bill'>  إنشاء فاتورة</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" aria-current="page" to="/orders">الطلبيات</Link>
