@@ -33,9 +33,7 @@ export const getTargets = () => async (dispatch) => {
       type: GET_TARGETS_REQUEST,
     });
 
-    const { data } = await axios.get(
-      `http://mhmodmj-001-site1.itempurl.com/api/Followed`
-    );
+    const { data } = await axios.get(`/api/Followed`);
 
     dispatch({
       type: GET_TARGETS_SUCCESS,
@@ -67,10 +65,7 @@ export const addNewTarget = (name) => async (dispatch) => {
       images: '1',
     };
 
-    const { data } = await axios.post(
-      `http://mhmodmj-001-site1.itempurl.com/api/Followed`,
-      body
-    );
+    const { data } = await axios.post(`/api/Followed`, body);
 
     dispatch({
       type: ADD_TARGET_SUCCESS,
@@ -102,10 +97,7 @@ export const deleteTarget = (id) => async (dispatch) => {
       images: '1',
     };
 
-    const { data } = await axios.post(
-      `http://mhmodmj-001-site1.itempurl.com/api/Followed`,
-      body
-    );
+    const { data } = await axios.post(`/api/Followed`, body);
 
     if (data.table[0].column1 === 'cant delete it') {
       throw new Error('لا يمكن حذف المخصص لوجود معلومات متعلقة فيه');
@@ -139,7 +131,7 @@ export const deleteTarget = (id) => async (dispatch) => {
 //     };
 
 //     const { data } = await axios.post(
-//       `http://mhmodmj-001-site1.itempurl.com/api/categories`,
+//       `/api/categories`,
 //       body
 //     );
 
@@ -161,7 +153,7 @@ export const deleteTarget = (id) => async (dispatch) => {
 //     };
 
 //     const { data } = await axios.post(
-//       `http://mhmodmj-001-site1.itempurl.com/api/categories`,
+//       `/api/categories`,
 //       body
 //     );
 //     dispatch({ type: SHOW_TARGET_SUCCESS, payload: id });
@@ -185,10 +177,7 @@ export const updateTarget = (id, name) => async (dispatch) => {
       images: '1',
     };
 
-    const { data } = await axios.post(
-      `http://mhmodmj-001-site1.itempurl.com/api/Followed`,
-      body
-    );
+    const { data } = await axios.post(`/api/Followed`, body);
 
     dispatch({
       type: UPDATE_TARGET_SUCCESS,

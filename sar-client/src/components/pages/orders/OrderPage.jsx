@@ -1,10 +1,8 @@
-import React from 'react'
-import Orders from '../../ui/complexComponents/Orders'
+import React from 'react';
+import Orders from '../../ui/complexComponents/Orders';
 
-const OrderPage = () => {
-  return (
-    <Orders />
-  )
-}
+const OrderPage = ({ empST }) => {
+  return <Orders empST={empST} />;
+};
 
-export default OrderPage
+export default OrderPage;

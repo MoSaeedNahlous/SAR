@@ -13,9 +13,7 @@ export const getPosts = () => async (dispatch) => {
       type: GET_POSTS_REQUEST,
     });
 
-    const { data } = await axios.get(
-      `http://mhmodmj-001-site1.itempurl.com/posts`
-    );
+    const { data } = await axios.get(`/api/Post`);
 
     dispatch({
       type: GET_POSTS_SUCCESS,
@@ -33,8 +31,8 @@ export const getPosts = () => async (dispatch) => {
 };
 
 export const setCurrentPost = (post) => async (dispatch) => {
-    dispatch({
-      type: SET_CURRENT_POST,
-      payload: post,
-    });
+  dispatch({
+    type: SET_CURRENT_POST,
+    payload: post,
+  });
 };

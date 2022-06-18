@@ -10,8 +10,21 @@ import {
   addNewTarget,
   updateTarget,
 } from '../../../../redux/actions/targetActions';
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 const TargetForm = () => {
   const dispatch = useDispatch();
+
+  const nav = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  useEffect(() => {
+    if (!cookies.user) {
+      nav('/manager/login', { replace: true });
+    }
+    if (cookies.user.split('+')[1] !== 'A') {
+      nav('/', { replace: true });
+    }
+  }, [cookies.user]);
 
   const currentTarget = useSelector((state) => state.setCurrentTarget);
   const { currentTarget: current } = currentTarget;
@@ -31,6 +44,9 @@ const TargetForm = () => {
   useEffect(() => {
     if (current && current.followedName) {
       setName(current.followedName);
+    }
+    if (!current || !current.followedName) {
+      setName('');
     }
   }, [current]);
 
@@ -65,7 +81,7 @@ const TargetForm = () => {
       )}
       {addingError && (
         <Alert
-          variant='error'
+          severity="error"
           onClose={() => {
             dispatch({ type: ADD_TARGET_RESET });
           }}
@@ -84,7 +100,7 @@ const TargetForm = () => {
       )}
       {updateError && (
         <Alert
-          variant='error'
+          severity="error"
           onClose={() => {
             dispatch({ type: UPDATE_TARGET_RESET });
           }}
@@ -104,17 +120,27 @@ const TargetForm = () => {
       <button
         className='btn btn-primary mx-2'
         type='submit'
-        disabled={addingLoading || updateLoading}
+        disabled={addingLoading || updateLoading || current.followedID}
       >
         {addingLoading ? <CircularProgress size={20} color='grey' /> : 'إضافة'}
       </button>
 
       <button
         className='btn btn-outline-primary'
-        disabled={addingLoading || updateLoading}
+        disabled={addingLoading || updateLoading || !current.followedID}
         onClick={() => onClickHandler(current.followedID, name)}
       >
-        {addingLoading ? <CircularProgress size={20} color='grey' /> : 'تعديل'}
+        {updateLoading ? <CircularProgress size={20} color='grey' /> : 'تعديل'}
+      </button>
+
+      <button
+        className='btn btn-info'
+        disabled={addingLoading || updateLoading || !current.followedID}
+        onClick={() => {
+          dispatch({ type: SET_CURRENT_TARGET_RESET });
+        }}
+      >
+        إزالة التحديد
       </button>
     </form>
   );

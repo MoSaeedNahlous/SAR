@@ -1,14 +1,14 @@
-import React from 'react'
-import AddCustomerForm from '../../../ui/forms/addCustomer/AddCustomerForm'
-import Customers from '../../../ui/tables/customers/Customers'
+import React from 'react';
+import AddCustomerForm from '../../../ui/forms/addCustomer/AddCustomerForm';
+import Customers from '../../../ui/tables/customers/Customers';
 
-const AddCustomer = () => {
+const AddCustomer = ({ emp }) => {
   return (
     <>
-        <AddCustomerForm />
-        <Customers />
+      <AddCustomerForm emp={emp} />
+      <Customers emp={emp} />
     </>
-  )
-}
+  );
+};
 
-export default AddCustomer
+export default AddCustomer;

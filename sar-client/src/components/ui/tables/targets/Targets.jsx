@@ -66,7 +66,9 @@ const Targets = () => {
   }, [success, updateSuccess, addSuccess]);
 
   const deleteHandler = (id) => {
-    dispatch(deleteTarget(id));
+    if (confirm('هل أنت متأكد؟')) {
+      dispatch(deleteTarget(id));
+    }
   };
 
   if (loading) {
@@ -78,14 +80,14 @@ const Targets = () => {
   }
 
   if (error) {
-    return <Alert variant='error'>{error}</Alert>;
+    return <Alert severity='error'>{error}</Alert>;
   }
 
   return (
     <div>
       {error && (
         <Alert
-          variant='error'
+          severity='error'
           onClose={() => {
             dispatch({ type: DELETE_TARGET_RESET });
           }}
@@ -104,7 +106,7 @@ const Targets = () => {
       )}
       {deleteError && (
         <Alert
-          variant='error'
+          severity='error'
           onClose={() => {
             dispatch({ type: DELETE_TARGET_RESET });
           }}

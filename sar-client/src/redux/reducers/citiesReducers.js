@@ -41,7 +41,7 @@ export const getCitiesReducer = (state = { cities: [] }, action) => {
                 cities: state.cities.map(
                     (city) => {
                         if (city.cityID == action.payload) {
-                            city.state = 'deleted'
+                            city.state = 'notActive'
                         } 
                         return city
                     }
@@ -59,7 +59,7 @@ export const getCitiesReducer = (state = { cities: [] }, action) => {
                 cities: state.cities.map(
                     (city) => {
                         if (city.cityID == action.payload) {
-                            city.state = '1'
+                            city.state = 'active'
                         } 
                         return city
                     }
